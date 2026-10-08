@@ -51,7 +51,9 @@ The two `proprietary-files*.txt` files and `extract-files.py` remain a first-pas
 extraction setup. Candidate paths were filtered against the connected `cubs`
 stock partitions, but presence on stock does not establish that every candidate
 is needed or appropriate for this product. Review the lists and validate the
-generated vendor tree before attempting a build.
+generated vendor tree before attempting a build. The vendor list includes stock
+RRO overlays, capability XMLs, and vendor init scripts as extraction references;
+their files are still local-only and are not committed here.
 
 The local stock partition images and extracted files are stored outside this
 repository. They contain proprietary firmware and must not be committed or
