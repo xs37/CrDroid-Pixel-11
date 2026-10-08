@@ -4,11 +4,11 @@
            path="device/google/cubs"
            remote="github"
            revision="main" />
-  <project name="atrejokm301/espada-kernel"
+  <project name="xs37/espada-kernel-KSU-Susfs"
            path="kernel/google/spacecraft"
            remote="github"
            revision="espada" />
-  <project name="asdfmonster261/yogi-orangefox"
+  <project name="xs37/yogi-orangefox"
            path="device/google/pixels"
            remote="github"
            revision="main" />

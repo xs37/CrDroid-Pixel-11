@@ -22,18 +22,21 @@ there and must be checked against this device's stock images before producing im
 
 The local manifest syncs:
 
-- [Espada kernel](https://github.com/atrejokm301/espada-kernel), branch `espada`.
-  Its README lists the `cubs` family, but says it was tested on `grizzly`; the
+- [Espada kernel fork](https://github.com/xs37/espada-kernel-KSU-Susfs),
+  branch `espada`. This fork is six commits ahead of the upstream Espada branch;
+  its README lists the `cubs` family but says it was tested on `grizzly`. The
   generated `boot` and `vendor_kernel_boot` images must stay matched.
-- [OrangeFox recovery tree](https://github.com/asdfmonster261/yogi-orangefox),
-  branch `main`. This is a recovery tree, not the Android ROM device tree.
+- [OrangeFox recovery fork](https://github.com/xs37/yogi-orangefox), branch
+  `main`. This is a recovery tree, not the Android ROM device tree.
 - [Yogi Android 17 tree](https://github.com/asdfmonster261/android_device_google_yogi),
   branch `lineage-24.0`, as a porting reference only. It targets a foldable and
   must not be used as the `cubs` product.
 
+The kernel and recovery source are hosted in their own repositories and fetched
+by the local manifest; they are not copied into this device-tree repository.
 No Google stock images, extracted proprietary blobs, or build outputs belong in
-this repository. Keep locally extracted files under `vendor/google/cubs` in the
-Android source checkout and do not publish them.
+any public repository. Keep locally extracted files under `vendor/google/cubs`
+in the Android source checkout and do not publish them.
 
 ## Sync on the Linux build desktop
 
