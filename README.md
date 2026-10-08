@@ -1,2 +1,74 @@
-# CrDroid-Pixel-11
-WIP CrDroid-Pixel-11
+# CrDroid Pixel 11 (`cubs`)
+
+Early Android 17 / CrDroid 17 device-tree bring-up for the base Google Pixel 11.
+This is an **untested work in progress**, not a build-ready or flashable ROM.
+
+## Verified target
+
+The connected stock device reported:
+
+- Product: `cubs` / Pixel 11
+- SoC platform: `malibu` / Tensor G6
+- Android release and SDK: 17 / 37
+- First API level and VNDK: 37
+- ABI: `arm64-v8a` only; maximum page size: 16 KiB
+- Physical `super` partition: 10 GiB
+- Boot, init_boot, vendor_boot, and vendor_kernel_boot partitions: 64, 8, 64, and 64 MiB
+
+Values in `BoardConfig.mk` that are not directly verified on `cubs` are called out
+there and must be checked against this device's stock images before producing images.
+
+## Source projects
+
+The local manifest syncs:
+
+- [Espada kernel](https://github.com/atrejokm301/espada-kernel), branch `espada`.
+  Its README lists the `cubs` family, but says it was tested on `grizzly`; the
+  generated `boot` and `vendor_kernel_boot` images must stay matched.
+- [OrangeFox recovery tree](https://github.com/asdfmonster261/yogi-orangefox),
+  branch `main`. This is a recovery tree, not the Android ROM device tree.
+- [Yogi Android 17 tree](https://github.com/asdfmonster261/android_device_google_yogi),
+  branch `lineage-24.0`, as a porting reference only. It targets a foldable and
+  must not be used as the `cubs` product.
+
+No Google stock images, extracted proprietary blobs, or build outputs belong in
+this repository. Keep locally extracted files under `vendor/google/cubs` in the
+Android source checkout and do not publish them.
+
+## Sync on the Linux build desktop
+
+Install the Android build prerequisites on the desktop, then initialize crDroid
+17 and sync the source projects:
+
+```sh
+mkdir -p ~/android/crdroid-cubs
+cd ~/android/crdroid-cubs
+repo init -u https://github.com/crdroidandroid/android.git -b 17.0
+mkdir -p .repo/local_manifests
+curl -fL \
+  https://raw.githubusercontent.com/xs37/CrDroid-Pixel-11/main/local_manifests/cubs.xml \
+  -o .repo/local_manifests/cubs.xml
+repo sync -c -j"$(nproc --all)"
+```
+
+The manifest checks out this repository at `device/google/cubs`, the Espada
+kernel source, the OrangeFox recovery source, and the Yogi reference tree.
+
+## Not ready to build or flash
+
+The current tree is only a starting point. Before attempting a ROM build, the
+`cubs` port still needs:
+
+- A device-specific product configuration, init/fstab setup, overlays, VINTF
+  declarations, and SELinux policy derived from `cubs` firmware rather than
+  copied wholesale from the foldable Yogi tree.
+- A local proprietary-blob extraction list and generated `vendor/google/cubs`
+  tree. These files are intentionally not included here.
+- A verified integration path for Espada's Kleaf outputs, including its matching
+  `boot` and `vendor_kernel_boot` images and the stock vendor modules.
+- Verification of the partition group, boot headers, DTBO, AVB, and recovery
+  configuration against the `cubs` stock images.
+- A successful build and device bring-up test on the Pixel 11.
+
+The product files stop with a clear error until the local proprietary vendor
+tree exists. Do not flash artifacts from this WIP.

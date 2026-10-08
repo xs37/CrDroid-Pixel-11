@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <project name="xs37/CrDroid-Pixel-11"
+           path="device/google/cubs"
+           remote="github"
+           revision="main" />
+  <project name="atrejokm301/espada-kernel"
+           path="kernel/google/spacecraft"
+           remote="github"
+           revision="espada" />
+  <project name="asdfmonster261/yogi-orangefox"
+           path="device/google/pixels"
+           remote="github"
+           revision="main" />
+  <!-- Porting reference only; this tree targets the foldable yogi. -->
+  <project name="asdfmonster261/android_device_google_yogi"
+           path="device/google/yogi"
+           remote="github"
+           revision="lineage-24.0" />
+</manifest>
