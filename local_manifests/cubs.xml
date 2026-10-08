@@ -7,7 +7,7 @@
   <project name="xs37/espada-kernel-KSU-Susfs"
            path="kernel/google/spacecraft"
            remote="github"
-           revision="espada" />
+           revision="Base" />
   <project name="xs37/yogi-orangefox"
            path="device/google/pixels"
            remote="github"

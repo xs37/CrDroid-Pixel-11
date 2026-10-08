@@ -7,7 +7,7 @@ VENDOR_PATH := vendor/google/cubs
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 $(call inherit-product, $(DEVICE_PATH)/aosp_cubs.mk)
 
-PRODUCT_NAME := lineage_cubs
+PRODUCT_NAME := Crdroid_cubs
 PRODUCT_DEVICE := cubs
 PRODUCT_MODEL := Pixel 11
 PRODUCT_BRAND := google
