@@ -38,6 +38,20 @@ No Google stock images, extracted proprietary blobs, or build outputs belong in
 any public repository. Keep locally extracted files under `vendor/google/cubs`
 in the Android source checkout and do not publish them.
 
+## Stock configuration and blob candidates
+
+The stock `cubs` vendor VINTF manifest is included at
+[`vintf/manifest.xml`](vintf/manifest.xml). The two `proprietary-files*.txt`
+files and `extract-files.py` are a first-pass extraction setup adapted from the
+Yogi reference. Their candidate paths were filtered against the connected
+`cubs` stock partitions, but presence on stock does not establish that every
+candidate is needed or appropriate for this product. Review the lists and
+validate the generated vendor tree before attempting a build.
+
+The local stock partition images and extracted files are stored outside this
+repository. They contain proprietary firmware and must not be committed or
+uploaded to a public repository.
+
 ## Sync on the Linux build desktop
 
 Install the Android build prerequisites on the desktop, then initialize crDroid
@@ -62,11 +76,10 @@ kernel source, the OrangeFox recovery source, and the Yogi reference tree.
 The current tree is only a starting point. Before attempting a ROM build, the
 `cubs` port still needs:
 
-- A device-specific product configuration, init/fstab setup, overlays, VINTF
-  declarations, and SELinux policy derived from `cubs` firmware rather than
-  copied wholesale from the foldable Yogi tree.
-- A local proprietary-blob extraction list and generated `vendor/google/cubs`
-  tree. These files are intentionally not included here.
+- Device-specific init/fstab setup, overlays, SELinux policy, and validation of
+  the included stock VINTF manifest.
+- A generated local `vendor/google/cubs` tree from the stock partitions. The
+  actual proprietary files are intentionally not included here.
 - A verified integration path for Espada's Kleaf outputs, including its matching
   `boot` and `vendor_kernel_boot` images and the stock vendor modules.
 - Verification of the partition group, boot headers, DTBO, AVB, and recovery

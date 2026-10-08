@@ -8,6 +8,8 @@ PRODUCT_SHIPPING_API_LEVEL := 37
 PRODUCT_TARGET_VNDK_VERSION := 37
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vintf/manifest.xml
+
 # The malibu Yogi reference uses this virtual A/B setup. Verify it against the
 # cubs super metadata before treating this product configuration as complete.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)

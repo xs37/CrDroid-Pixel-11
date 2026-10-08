@@ -1,0 +1,2 @@
+# No additional stock vendor files are excluded in this initial WIP list.
+# Review against AOSP-built modules before using the extraction script.
