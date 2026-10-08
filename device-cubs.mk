@@ -10,8 +10,6 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vintf/manifest.xml
 
-# The malibu Yogi reference uses this virtual A/B setup. Verify it against the
-# cubs super metadata before treating this product configuration as complete.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression_with_xor.mk)
 PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := lz4
