@@ -1,0 +1,23 @@
+blocklist google_gem_test.ko
+blocklist sscoredump_sample_test.ko
+blocklist sscoredump_test.ko
+# Display
+blocklist gs-panel-common-test.ko
+# Interrupts
+blocklist irq-gia-google-test.ko
+# Mailbox Interface
+blocklist goog-mba-gdmc-iface-test.ko
+blocklist goog-mba-cpm-iface-test.ko
+# IOMMU
+blocklist iommu_map_benchmark.ko
+# Touch
+blocklist syna_touch.ko
+blocklist focal_touch.ko
+# google_dta and deps.
+blocklist google_dta.ko
+blocklist ebu-google.ko
+blocklist goog-mba-ebu-iface.ko
+blocklist cs40l26-i2c.ko
+blocklist bcmdhd4383.ko
+blocklist bcmdhd4390.ko
+blocklist dwc3-google-aux.ko

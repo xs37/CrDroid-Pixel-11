@@ -110,7 +110,6 @@ vendor/bin/pixelstats-vendor
 vendor/bin/sap_log
 vendor/bin/sendhint
 vendor/bin/set_fg_model
-vendor/bin/shamp
 vendor/bin/shared_modem_platform
 vendor/bin/sscoredump
 vendor/bin/storage_init.sh
@@ -956,3 +955,13 @@ vendor/etc/init/nfc2-service-default.rc
 vendor/etc/init/qfp-daemon.rc
 vendor/etc/init/rebalance_interrupts-vendor.gs101.rc
 vendor/etc/init/vndservicemanager.rc
+vendor/etc/selinux/vendor_file_contexts
+vendor/etc/selinux/vendor_hwservice_contexts
+vendor/etc/selinux/vendor_keystore2_key_contexts
+vendor/etc/selinux/vendor_mac_permissions.xml
+vendor/etc/selinux/vendor_property_contexts
+vendor/etc/selinux/vendor_seapp_contexts
+vendor/etc/selinux/vendor_sepolicy.cil
+vendor/etc/selinux/vendor_service_contexts
+vendor/etc/selinux/vendor_tee_service_contexts
+vendor/etc/selinux/vndservice_contexts

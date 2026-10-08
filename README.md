@@ -10,10 +10,11 @@ The connected stock device reported:
 - Product: `cubs` / Pixel 11
 - SoC platform: `malibu` / Tensor G6
 - Android release and SDK: 17 / 37
-- First API level and VNDK: 37
+- First API level and VNDK: 37; board API level: `202604` (frozen)
 - ABI: `arm64-v8a` only; maximum page size: 16 KiB
 - Physical `super` partition: 10 GiB
 - Boot, init_boot, vendor_boot, and vendor_kernel_boot partitions: 64, 8, 64, and 64 MiB
+- UFS boot device and module-load mode: `3c2d0000.ufs` and `performance`
 
 Values in `BoardConfig.mk` that are not directly verified on `cubs` are called out
 there and must be checked against this device's stock images before producing images.
@@ -47,13 +48,19 @@ fstab into the vendor ramdisk. Board settings now include the stock logical
 partition filesystem types, density, image sizes, page-size support, and
 vendor_boot recovery layout.
 
-The two `proprietary-files*.txt` files and `extract-files.py` remain a first-pass
-extraction setup. Candidate paths were filtered against the connected `cubs`
-stock partitions, but presence on stock does not establish that every candidate
-is needed or appropriate for this product. Review the lists and validate the
-generated vendor tree before attempting a build. The vendor list includes stock
-RRO overlays, capability XMLs, and vendor init scripts as extraction references;
-their files are still local-only and are not committed here.
+The `proprietary-files*.txt` files and `extract-files.py` are a stock-backed
+extraction setup. Candidate paths were checked against the local `cubs` dump,
+including the separate `vendor_dlkm` partition. The `vendor_dlkm` list contains
+stock module references only; the proprietary module binaries are extracted
+locally and are not committed here. The product configuration stages the stock
+module load order and blocklist plus the Cubs-specific module-init config.
+Selected graphics, keystore, gatekeeper, and SoC manufacturer properties come
+from the stock vendor build properties; the proprietary SELinux contexts and
+vendor policy are also extraction references, not committed files.
+Presence on stock does not establish that every candidate is needed or
+appropriate for this product; validate the generated vendor tree before
+attempting a build. The vendor list also includes stock RRO overlays,
+capability XMLs, and vendor init scripts as extraction references.
 
 The local stock partition images and extracted files are stored outside this
 repository. They contain proprietary firmware and must not be committed or
@@ -87,8 +94,11 @@ considered build-ready, the `cubs` port still needs:
   actual proprietary files are intentionally not included here.
 - Device-specific overlays and SELinux policy, plus validation of the included
   stock VINTF manifest against the synced Android 17 source.
-- A verified integration path for Espada's Kleaf outputs, including matching
-  `boot` and `vendor_kernel_boot` images and the stock vendor modules.
+- A verified integration path for the selected kernel branch's outputs,
+  including matching `boot` and `vendor_kernel_boot` images, ABI-compatible
+  vendor modules, and the matching `system_dlkm` module set. The device shell
+  cannot read the stock `system_dlkm` module directory, so this still needs to
+  come from the kernel build or another verified stock extraction.
 - Verification of the partition group, boot headers, DTBO, AVB, and recovery
   configuration against the `cubs` stock images.
 - A successful build and device bring-up test on the Pixel 11.

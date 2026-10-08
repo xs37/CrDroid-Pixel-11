@@ -34,10 +34,14 @@ AB_OTA_PARTITIONS += \
 
 # First-stage init reads fstab from vendor_boot's vendor ramdisk.
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/rootdir/etc/fstab.malibu:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.malibu
+    $(DEVICE_PATH)/rootdir/etc/fstab.malibu:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.malibu \
+    $(DEVICE_PATH)/vendor_dlkm/init.insmod.cubs.cfg:$(TARGET_COPY_OUT_VENDOR_DLKM)/etc/init.insmod.cubs.cfg \
+    $(DEVICE_PATH)/vendor_dlkm.modules.load:$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules/modules.load \
+    $(DEVICE_PATH)/vendor_dlkm.modules.blocklist:$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules/modules.blocklist
 
 ifeq ($(wildcard $(VENDOR_PATH)/cubs-vendor.mk),)
-$(error Missing $(VENDOR_PATH)/cubs-vendor.mk. Extract the cubs proprietary files locally before building; this WIP has no verified blob list yet.)
+$(error Missing $(VENDOR_PATH)/cubs-vendor.mk. Run extract-files.py with the local cubs stock dump; proprietary files are not included in this repository.)
 endif
 
 $(call inherit-product, $(VENDOR_PATH)/cubs-vendor.mk)
+$(call inherit-product, $(DEVICE_PATH)/vendor_props.mk)

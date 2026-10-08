@@ -54,5 +54,10 @@ module.add_generated_proprietary_file(
     skip_file_list_name="skip-files-vendor.txt",
 )
 
+module.add_generated_proprietary_file(
+    "proprietary-files-vendor-dlkm.txt",
+    partition="vendor_dlkm",
+)
+
 if __name__ == "__main__":
     ExtractUtils.device(module).run()
