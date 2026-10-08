@@ -257,6 +257,7 @@ vendor/etc/init/google.hardware.image-V1-service.rc
 vendor/etc/init/google.hardware.media.c2@3.0-service.rc
 vendor/etc/init/gpuflag.rc
 vendor/etc/init/hw/init.dpa.rc
+vendor/etc/init/hw/init.cubs.rc
 vendor/etc/init/hw/init.malibu.rc
 vendor/etc/init/hw/init.malibu.usb.rc
 vendor/etc/init/hw/init.modem.rc

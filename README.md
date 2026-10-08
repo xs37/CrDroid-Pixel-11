@@ -39,12 +39,19 @@ in the Android source checkout and do not publish them.
 ## Stock configuration and blob candidates
 
 The stock `cubs` vendor VINTF manifest is included at
-[`vintf/manifest.xml`](vintf/manifest.xml). The two `proprietary-files*.txt`
-files and `extract-files.py` are a first-pass extraction setup adapted from the
-Yogi reference. Their candidate paths were filtered against the connected
-`cubs` stock partitions, but presence on stock does not establish that every
-candidate is needed or appropriate for this product. Review the lists and
-validate the generated vendor tree before attempting a build.
+[`vintf/manifest.xml`](vintf/manifest.xml). The first-stage fstab at
+[`rootdir/etc/fstab.malibu`](rootdir/etc/fstab.malibu) and recovery fstab at
+[`recovery/recovery.fstab`](recovery/recovery.fstab) are source configuration
+derived from the local stock dump. The product makefile stages the first-stage
+fstab into the vendor ramdisk. Board settings now include the stock logical
+partition filesystem types, density, image sizes, page-size support, and
+vendor_boot recovery layout.
+
+The two `proprietary-files*.txt` files and `extract-files.py` remain a first-pass
+extraction setup. Candidate paths were filtered against the connected `cubs`
+stock partitions, but presence on stock does not establish that every candidate
+is needed or appropriate for this product. Review the lists and validate the
+generated vendor tree before attempting a build.
 
 The local stock partition images and extracted files are stored outside this
 repository. They contain proprietary firmware and must not be committed or
@@ -71,14 +78,14 @@ kernel source, the OrangeFox recovery source, and the Yogi reference tree.
 
 ## Not ready to build or flash
 
-The current tree is only a starting point. Before attempting a ROM build, the
-`cubs` port still needs:
+This is device-tree source setup, not a ROM build. Before the tree can be
+considered build-ready, the `cubs` port still needs:
 
-- Device-specific init/fstab setup, overlays, SELinux policy, and validation of
-  the included stock VINTF manifest.
 - A generated local `vendor/google/cubs` tree from the stock partitions. The
   actual proprietary files are intentionally not included here.
-- A verified integration path for Espada's Kleaf outputs, including its matching
+- Device-specific overlays and SELinux policy, plus validation of the included
+  stock VINTF manifest against the synced Android 17 source.
+- A verified integration path for Espada's Kleaf outputs, including matching
   `boot` and `vendor_kernel_boot` images and the stock vendor modules.
 - Verification of the partition group, boot headers, DTBO, AVB, and recovery
   configuration against the `cubs` stock images.

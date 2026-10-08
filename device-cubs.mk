@@ -32,6 +32,10 @@ AB_OTA_PARTITIONS += \
     vendor_dlkm \
     vendor_kernel_boot
 
+# First-stage init reads fstab from vendor_boot's vendor ramdisk.
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/rootdir/etc/fstab.malibu:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.malibu
+
 ifeq ($(wildcard $(VENDOR_PATH)/cubs-vendor.mk),)
 $(error Missing $(VENDOR_PATH)/cubs-vendor.mk. Extract the cubs proprietary files locally before building; this WIP has no verified blob list yet.)
 endif
