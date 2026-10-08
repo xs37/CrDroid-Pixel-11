@@ -23,9 +23,7 @@ there and must be checked against this device's stock images before producing im
 The local manifest syncs:
 
 - [Espada kernel fork](https://github.com/xs37/espada-kernel-KSU-Susfs),
-  branch `espada`. This fork is six commits ahead of the upstream Espada branch;
-  its README lists the `cubs` family but says it was tested on `grizzly`. The
-  generated `boot` and `vendor_kernel_boot` images must stay matched.
+  branch `Base`. The generated `boot` and `vendor_kernel_boot` images must stay matched.
 - [OrangeFox recovery fork](https://github.com/xs37/yogi-orangefox), branch
   `main`. This is a recovery tree, not the Android ROM device tree.
 - [Yogi Android 17 tree](https://github.com/asdfmonster261/android_device_google_yogi),
