@@ -28,8 +28,7 @@ The local manifest syncs:
 - [OrangeFox recovery fork](https://github.com/xs37/yogi-orangefox), branch
   `main`. This is a recovery tree, not the Android ROM device tree.
 - [Yogi Android 17 tree](https://github.com/asdfmonster261/android_device_google_yogi),
-  branch `lineage-24.0`, as a porting reference only. It targets a foldable and
-  must not be used as the `cubs` product.
+  branch `lineage-24.0`, as a porting reference only!
 
 The kernel and recovery source are hosted in their own repositories and fetched
 by the local manifest; they are not copied into this device-tree repository.
