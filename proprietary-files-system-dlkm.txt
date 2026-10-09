@@ -1,4 +1,4 @@
-﻿# Stock cubs system_dlkm modules from the local dump.
+# Stock cubs system_dlkm modules from the local dump.
 # Proprietary binaries are extracted locally and must not be committed.
 
 
