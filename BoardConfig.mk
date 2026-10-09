@@ -131,16 +131,14 @@ BOARD_AVB_SYSTEM_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_VENDOR_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_VENDOR_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 
+# The stock vendor policy (stock_vendor.te and the *_contexts files) is converted from the
+# stock vendor_sepolicy.cil. It already declares the pixel-sepolicy citadel, perfmgr,
+# powerstats, sscoredump and wifi_ext types, so only the Lineage-specific dirs are added.
 BOARD_VENDOR_SEPOLICY_DIRS += \
     $(DEVICE_PATH)/sepolicy/vendor \
-    hardware/google/pixel-sepolicy/citadel \
-    hardware/google/pixel-sepolicy/power-libperfmgr \
-    hardware/google/pixel-sepolicy/powerstats \
-    hardware/google/pixel-sepolicy/sscoredump \
     hardware/google/pixel-sepolicy/lineage_health \
     hardware/google/pixel-sepolicy/powershare \
-    hardware/google/pixel-sepolicy/touch \
-    hardware/google/pixel-sepolicy/wifi_ext
+    hardware/google/pixel-sepolicy/touch
 
 # The stock vendor_dlkm modules are extracted locally and remain proprietary.
 CUBS_VENDOR_KERNEL_MODULES_DIR := $(VENDOR_PATH)/proprietary/vendor_dlkm/lib/modules

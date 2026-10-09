@@ -1,6 +1,3 @@
-
-# Recovered from stock's compiled contexts: the set difference between what
-# stock ships and what our build already produces.
 vendor.google.wireless_charger.IWirelessCharger/default                      u:object_r:hal_wireless_charger_service:s0
 vendor.google.wireless_charger.service.IWlcService/default                   u:object_r:hal_wlcservice_service:s0
 com.google.pixel.camera.connectivity.hal.provider.ICameraProvider/default u:object_r:hal_pixel_remote_camera_service:s0
@@ -14,6 +11,7 @@ media.ecoservice      u:object_r:eco_service:s0
 com.google.pixel.modem_logging.IVendorModemLogging/default                   u:object_r:hal_modem_logging_service:s0
 com.google.pixel.modem_logging.log_files.IVendorModemLogFiles/default        u:object_r:hal_modem_logging_service:s0
 com.google.pixel.modem_logging.alcedo_t900.IAlcedoT900ModemLogging/default   u:object_r:hal_modem_logging_service:s0
+vendor.google.wifi_ext.IWifiExt/default  u:object_r:hal_wifi_ext_service:s0
 com.google.input.algos.gril.IGrilAntennaTuningService/default          u:object_r:gril_antenna_tuning_service:s0
 com.google.input.algos.spd.IScreenProtectorDetectorService/default     u:object_r:screen_protector_detector_service:s0
 com.google.input.ITouchContextService/default                          u:object_r:touch_context_service:s0
@@ -29,17 +27,21 @@ com.google.edgetpu.dba.IDevice/default                     u:object_r:edgetpu_db
 com.google.edgetpu.tachyon.IComputeService/default         u:object_r:edgetpu_tachyon_service:s0
 mapper/pixel u:object_r:hal_graphics_mapper_service:s0
 vendor.google.battery_mitigation.IBatteryMitigation/default    u:object_r:hal_battery_mitigation_service:s0
+android.hardware.security.keymint.IKeyMintDevice/strongbox      u:object_r:hal_keymint_service:s0
+android.hardware.security.sharedsecret.ISharedSecret/strongbox  u:object_r:hal_sharedsecret_service:s0
+android.hardware.security.keymint.IRemotelyProvisionedComponent/strongbox  u:object_r:hal_remotelyprovisionedcomponent_service:s0
 com.google.input.gia.core.IGiaService/default     u:object_r:hal_gia_service:s0
 com.google.input.gia.diagnose.IGiaDiagnoseService/default     u:object_r:hal_giadiagnose_service:s0
 com.google.flood.IFloodService/default u:object_r:flood_control_service:s0
 com.google.face.debug.IDebugHost/default              u:object_r:hal_face_debug_service:s0
 com.google.face.debug.IDebugManager/default           u:object_r:hal_face_debug_service:s0
 vendor.google.hardware.biometrics.face.IFaceExt/default              u:object_r:hal_face_ext_service:s0
-vendor.google.radio_ext.IRadioExt/default                 u:object_r:hal_radio_ext_service:s0
 vendor.google.ambience_hub.IAmbienceHubConsumerManager/default    u:object_r:hal_ambience_hub_service:s0
 vendor.google.ambience_hub.IAmbienceHubProducerManager/default    u:object_r:hal_ambience_hub_service:s0
+vendor.google.radio_ext.IRadioExt/default                 u:object_r:hal_radio_ext_service:s0
 vendor.qti.hardware.fingerprint.IQfpExtendedFingerprint/default   u:object_r:hal_fingerprint_service:s0
 com.google.hardware.biometrics.fingerprint.debug.IFingerprintDebug/default   u:object_r:hal_fingerprint_debug_service:s0
+mapper/pixel u:object_r:hal_graphics_mapper_service:s0
 vendor.mediatek.hardware.mtkradioex.data.IMtkRadioExData/slot1                u:object_r:hal_vendor_radio_external_service:s0
 vendor.mediatek.hardware.mtkradioex.data.IMtkRadioExData/slot2                u:object_r:hal_vendor_radio_external_service:s0
 vendor.mediatek.hardware.mtkradioex.messaging.IMtkRadioExMessaging/slot1      u:object_r:hal_vendor_radio_external_service:s0
@@ -103,6 +105,7 @@ vendor.google.gnss.gnss_manager.controller.IGnssLoggingController/default     u:
 vendor.google.gnss.gnss_manager.controller.IGnssVendorConfiguration/default   u:object_r:gnss_manager_service:s0
 com.google.hardware.pixel.display.IDisplay/default                            u:object_r:hal_pixel_display_service:s0
 com.google.hardware.pixel.display.IDisplay/secondary                          u:object_r:hal_pixel_display_service:s0
+power.stats-vendor                  u:object_r:hal_power_stats_vendor_service:s0
 vendor.google.plat_security.ISecureTimestamp/default                u:object_r:hal_plat_security_service:s0
 vendor.google.plat_security.ITrustyDecrypt/default                u:object_r:hal_plat_security_service:s0
 com.google.pixel.shared_modem_platform.ISharedModemPlatform/default u:object_r:hal_shared_modem_platform_service:s0

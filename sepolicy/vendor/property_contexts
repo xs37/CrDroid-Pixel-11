@@ -1,41 +1,95 @@
-vendor.thermal.             u:object_r:vendor_thermal_prop:s0
-vendor.debug.ssrdump.       u:object_r:vendor_ssrdump_prop:s0
-persist.vendor.sys.ssr.     u:object_r:vendor_ssrdump_prop:s0
+#line 50 "system/sepolicy/flagging/flagging_macros"
 
-# Recovered from stock's compiled contexts: the set difference between what
-# stock ships and what our build already produces.
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "system/sepolicy/vendor/property_contexts"
+# Properties for Context Hub HAL
+vendor.chre.preloaded_nanoapps.path             u:object_r:vendor_chre_hal_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "device/google/gs-common/wireless_charger/sepolicy/property_contexts"
 vendor.wlcservice.test.authentication       u:object_r:vendor_wlcservice_prop:s0 exact bool
 vendor.wlcservice.fwupdate.tx               u:object_r:vendor_wlcservice_prop:s0 exact enum 0 1 2 3
 vendor.wlcservice.start                     u:object_r:vendor_wlcservice_prop:s0 exact bool
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "device/google/gs-common/camera/sepolicy/vendor/property_contexts"
 vendor.camera.debug.       u:object_r:vendor_camera_debug_prop:s0
 persist.vendor.camera.pbcs.debug.       u:object_r:vendor_camera_pbcs_debug_prop:s0
 vendor.camera.pbcs.debug.       u:object_r:vendor_camera_pbcs_debug_prop:s0
+
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "device/google/gs-common/gear/dumpstate_v3/sepolicy/property_contexts"
+# verbose property name
 persist.vendor.verbose_logging_enabled     u:object_r:vendor_logger_prop:s0
+
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "device/google/gs-common/nfc/sepolicy_st54spi/property_contexts"
+# SecureElement vendor property
 persist.vendor.se.                         u:object_r:vendor_secure_element_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "device/google/gs-common/nfc/sepolicy_st21nfc/property_contexts"
+# NFC
 persist.vendor.nfc.                        u:object_r:vendor_nfc_prop:s0
 persist.vendor.nfc.antenna.                u:object_r:vendor_nfc_antenna_prop:s0
+
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "hardware/google/pixel-sepolicy/wifi_sniffer/property_contexts"
 persist.vendor.wifi.sniffer.                    u:object_r:vendor_wifi_sniffer_prop:s0
 vendor.wifi.sniffer.start                       u:object_r:vendor_wifi_sniffer_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "hardware/google/pixel-sepolicy/wifi_perf_diag/property_contexts"
 persist.vendor.wifi.perf_diag.period              u:object_r:vendor_wifi_perf_diag_prop:s0
 persist.vendor.wifi.perf_diag.file                u:object_r:vendor_wifi_perf_diag_prop:s0
 persist.vendor.wifi.perf_diag.netperf             u:object_r:vendor_wifi_perf_diag_prop:s0
 persist.vendor.wifi.perf_diag.pid                 u:object_r:vendor_wifi_perf_diag_prop:s0
 persist.vendor.wifi.perf_diag.mode                u:object_r:vendor_wifi_perf_diag_prop:s0
 vendor.wifi.perf_diag.start                       u:object_r:vendor_wifi_perf_diag_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "device/google/gs-common/trusty/sepolicy/property_contexts"
+# storageproxyd
 ro.vendor.trusty.storage.fs_ready_rw          u:object_r:vendor_trusty_storage_prop:s0
 ro.vendor.trusty.storage.fs_ready             u:object_r:vendor_trusty_storage_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "device/google/gs-common/pcie/sepolicy/property/property_contexts"
 vendor.devcoredump.  u:object_r:vendor_devcoredump_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "device/google/gs-common/performance/sepolicy/property_contexts"
 vendor.zram.nr_tags       u:object_r:vendor_zram_nr_tags_prop:s0 exact int
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "device/google/gs-common/ramdump_and_coredump/sepolicy/property_contexts"
+# ramdump
 ro.boot.ramdump                           u:object_r:vendor_ramdump_prop:s0
 vendor.debug.ramdump.                     u:object_r:vendor_ramdump_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "device/google/gs-common/aoc/sepolicy/property_contexts"
+# AoC
 vendor.aoc.firmware.version                     u:object_r:vendor_aoc_prop:s0
 persist.vendor.aoc.status_request_timed_out     u:object_r:vendor_timeout_aoc_prop:s0
 persist.vendor.radio.volte_mif_off              u:object_r:vendor_volte_mif_off:s0
+#line 1 "device/google/gs-common/insmod/sepolicy/property_contexts"
+# Kernel modules related
 vendor.common.modules.ready     u:object_r:vendor_device_prop:s0
 vendor.device.modules.ready     u:object_r:vendor_device_prop:s0
 vendor.all.modules.ready        u:object_r:vendor_device_prop:s0
 vendor.all.devices.ready        u:object_r:vendor_device_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "device/google/gs-common/audio/sepolicy/common/property_contexts"
+# for serial no
 vendor.audio_hal.device.serialno                u:object_r:vendor_audio_prop:s0
+
+# for audio
 vendor.audio_hal.period_multiplier              u:object_r:vendor_audio_prop:s0
 vendor.audiodump.enable                         u:object_r:vendor_audio_prop:s0
 persist.vendor.audio.                           u:object_r:vendor_audio_prop:s0
@@ -46,14 +100,36 @@ vendor.audiodump.encode.disable                 u:object_r:vendor_audio_prop:s0
 vendor.audiodump.log.cca.updated                u:object_r:vendor_audio_prop:s0
 vendor.audiodump.cca.config                     u:object_r:vendor_audio_prop:s0
 vendor.audio_hal.aidl.enable                    u:object_r:vendor_audio_prop:s0
+
+# for audio app
 persist.vendor.app.audio.                       u:object_r:vendor_audio_prop_restricted:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "device/google/gs-common/edgetpu/sepolicy/property_contexts"
+# for EdgeTPU
 vendor.edgetpu.service.                         u:object_r:vendor_edgetpu_service_prop:s0
 vendor.edgetpu.cpu_scheduler.                   u:object_r:vendor_edgetpu_cpu_scheduler_prop:s0
 vendor.edgetpu.runtime.                         u:object_r:vendor_edgetpu_runtime_prop:s0
+
+# for DarwinnDelegate
 vendor.edgetpu.tflite_delegate.                 u:object_r:vendor_tflite_delegate_prop:s0
+
+# for hetero runtime
 vendor.google.silicon.                          u:object_r:vendor_hetero_runtime_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "device/google/gs-common/gxp/sepolicy/property_contexts"
+# GXP Android Property.
 vendor.gxp.                                u:object_r:vendor_gxp_prop:s0
+
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "device/google/gs-common/storage/sepolicy/property_contexts"
 persist.vendor.intelligence          u:object_r:vendor_intelligence_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "device/google/malibu-sepolicy/vendor/powervr/property_contexts"
+# Pixel gralloc properties
 persist.vendor.pixel_gralloc.compression                     u:object_r:vendor_pixel_gralloc_prop:s0
 persist.vendor.pixel_gralloc.compression.cpu                 u:object_r:vendor_pixel_gralloc_prop:s0
 persist.vendor.pixel_gralloc.compression.gpu                 u:object_r:vendor_pixel_gralloc_prop:s0
@@ -62,22 +138,62 @@ persist.vendor.pixel_gralloc.compression.video_decoder       u:object_r:vendor_p
 persist.vendor.pixel_gralloc.compression.video_encoder       u:object_r:vendor_pixel_gralloc_prop:s0
 persist.vendor.pixel_gralloc.compression.camera              u:object_r:vendor_pixel_gralloc_prop:s0
 persist.vendor.pixel_gralloc.compression.tpu                 u:object_r:vendor_pixel_gralloc_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "device/google/gs-common/gsc/epic-sepolicy/property_contexts"
+# GSC
 vendor.nos.citadel.init_version_old        u:object_r:vendor_nos_citadel_init_version_old:s0
 vendor.nos.citadel.updates_tried            u:object_r:vendor_nos_citadel_updates_tried:s0
+
+# Reclassify service state properties to expose as vendor_public_prop
 init.svc.vendor.init_citadel               u:object_r:vendor_nos_citadel_init_state:s0
 init.svc.vendor.init_citadel_postinstall   u:object_r:vendor_nos_citadel_postinstall_state:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "device/google/gs-common/battery_mitigation/sepolicy/vendor/property_contexts"
+# Battery Mitigation
 vendor.brownout.mitigation.ready           u:object_r:vendor_mitigation_ready_prop:s0
 vendor.brownout_reason                     u:object_r:vendor_brownout_reason_prop:s0
 vendor.brownout.br.feasible                u:object_r:vendor_brownout_br_feasible_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "device/google/gs-common/gsc/sepolicy/property_contexts"
+vendor.nos.citadel.version     u:object_r:vendor_nos_citadel_version:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "vendor/google_devices/gs-common/proprietary/Floodcontrol/hal/sepolicy/property_contexts"
+# properties used by flood control
 ro.vendor.flood.  u:object_r:vendor_flood_prop:s0
+
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "device/google/gs-common/performance/experiments/sepolicy/property_contexts"
 vendor.perf.allow_experiments       u:object_r:vendor_perf_allow_experiments_prop:s0
 vendor.thermal.allow_experiments    u:object_r:vendor_thermal_allow_experiments_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "device/google/gs-common/performance/experiments/zram-swap-size/sepolicy/property_contexts"
+# The experiment .rc needs to read the content of this property (the property is set by PSS).
 vendor.pixel.system.phenotype.Perf__zram_swap_size_experiment             u:object_r:vendor_pixel_zram_swap_size_experiment_prop:s0
 vendor.pixel.system.phenotype.Perf__zram_writeback_size_experiment        u:object_r:vendor_pixel_zram_swap_size_experiment_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "vendor/google_devices/gs-common/proprietary/pixelsystemservice/sepolicy/flagtransmitter/property_contexts"
+# System properties phenotype flags
 vendor.pixel.system.phenotype.        u:object_r:vendor_pss_systemphenotype_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "device/google/malibu-sepolicy/vendor/property_contexts"
+# Subsystem coredump
+vendor.debug.ssrdump.                      u:object_r:vendor_ssrdump_prop:s0
+persist.vendor.sys.ssr.                    u:object_r:vendor_ssrdump_prop:s0
+
+# WiFi
 vendor.wlan.driver.version                 u:object_r:vendor_wifi_version:s0
 vendor.wlan.firmware.version               u:object_r:vendor_wifi_version:s0
 persist.vendor.wifi.logger.start           u:object_r:vendor_wlan_logging_prop:s0
+
+# Modem
 persist.vendor.modem.                      u:object_r:vendor_modem_prop:s0
 vendor.modem.                              u:object_r:vendor_modem_prop:s0
 vendor.modem.soc_id                        u:object_r:vendor_modem_info_prop:s0
@@ -87,22 +203,34 @@ vendor.service.nvram_restore               u:object_r:vendor_nvram_prop:s0
 persist.vendor.meta.                       u:object_r:vendor_meta_prop:s0
 persist.vendor.thinmd.                     u:object_r:vendor_thinmd_prop:s0
 vendor.thinmd.                             u:object_r:vendor_thinmd_prop:s0
+
+# Fingerprint
 persist.vendor.qfp.                        u:object_r:vendor_fingerprint_prop:s0
+
+# RIL property
 persist.vendor.radio.                      u:object_r:vendor_mtk_radio_prop:s0
 vendor.radio.testing.ecc                   u:object_r:vendor_radio_test_ecc_prop:s0
 vendor.ril.                                u:object_r:vendor_mtk_radio_prop:s0
 vendor.gsm.                                u:object_r:vendor_mtk_radio_prop:s0
 vendor.cdma.                               u:object_r:vendor_mtk_cdma_prop:s0
 vendor.mtk.wwan.vote.airplane              u:object_r:vendor_mtk_ril_vote_prop:s0
+
+# BSP
 persist.vendor.tool.ipaddress              u:object_r:vendor_mtk_tool_ipaddr_prop:s0
 vendor.mdl_coll.mtk.restart                u:object_r:vendor_mtk_mdl_coll_restart_type_prop:s0
+
+# IMS
 vendor.ims.eims.pdn.info                   u:object_r:vendor_mtk_ims_eims_pdn_prop:s0
 persist.vendor.ss.                         u:object_r:vendor_mtk_ss_vendor_prop:s0
 ro.vendor.md_mims_support                  u:object_r:vendor_mtk_ims_prop:s0
 persist.vendor.mtk.volte.enable            u:object_r:vendor_mtk_ims_config_prop:s0
 persist.vendor.mtk.vonr.enable             u:object_r:vendor_mtk_ims_config_prop:s0
 persist.vendor.mtk.wfc.enable              u:object_r:vendor_mtk_ims_config_prop:s0
+
+# ImsMedia
 vendor.imsmediahal.                        u:object_r:vendor_imsmedia_prop:s0
+
+# GPS
 vendor.gps.                                u:object_r:vendor_gps_prop:s0
 vendor.debug.gps                           u:object_r:vendor_gps_prop:s0
 vendor.agps.                               u:object_r:vendor_gps_prop:s0
@@ -110,22 +238,54 @@ vendor.mtk.wwan.vote.location              u:object_r:vendor_gps_prop:s0
 vendor.mtk.wwan.vote.gnss                  u:object_r:vendor_gps_prop:s0
 vendor.gpsdbglog.                          u:object_r:vendor_gps_prop:s0
 persist.vendor.gps                         u:object_r:vendor_gps_prop:s0
+
+# DPA
 persist.vendor.dpa.                        u:object_r:vendor_google_dpa_prop:s0
+
+# Battery
 vendor.battery.defender.                   u:object_r:vendor_battery_defender_prop:s0
 persist.vendor.battery.fg_model_version     u:object_r:vendor_battery_fg_prop:s0
+
+# USB
 persist.vendor.usb.                        u:object_r:vendor_usb_config_prop:s0
 vendor.usb.                                u:object_r:vendor_usb_config_prop:s0
 vendor.sys.usb.adb.disabled                u:object_r:vendor_usb_config_prop:s0
+
+# Tcpdump_logger
 persist.vendor.tcpdump.capture.len         u:object_r:vendor_tcpdump_log_prop:s0
 persist.vendor.tcpdump.log.alwayson        u:object_r:vendor_tcpdump_log_prop:s0
 vendor.tcpdump.                            u:object_r:vendor_tcpdump_log_prop:s0
+
+# Camera
 persist.vendor.camera.                     u:object_r:vendor_camera_prop:s0
 vendor.camera.                             u:object_r:vendor_camera_prop:s0
+
+# Display
 vendor.display.                            u:object_r:vendor_display_prop:s0
 ro.vendor.display.                         u:object_r:vendor_display_prop:s0
 ro.vendor.primarydisplay.                  u:object_r:vendor_display_prop:s0
 ro.vendor.secondarydisplay.                u:object_r:vendor_display_prop:s0
 persist.vendor.display.primary.            u:object_r:vendor_display_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "device/google/gs-common/thermal/sepolicy/thermal_hal/property_contexts"
+vendor.thermal.                           u:object_r:vendor_thermal_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "hardware/google/pixel-sepolicy/power-libperfmgr/property_contexts"
+vendor.powerhal.                               u:object_r:vendor_power_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "vendor/google_devices/gs-common/proprietary/vibrator/common/property_contexts"
 ro.vendor.vibrator.hal.         u:object_r:vendor_vibrator_prop:s0
 persist.vendor.vibrator.hal.    u:object_r:vendor_vibrator_prop:s0
-vendor.gf.                                 u:object_r:vendor_fingerprint_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
+#line 1 "system/sepolicy/reqd_mask/property_contexts"
+# empty property_contexts file - this file is used to generate an empty
+# non-platform property context for devices without any property_contexts
+# customizations.
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/cubs/newline"
+
