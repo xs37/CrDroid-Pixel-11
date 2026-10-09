@@ -1,0 +1,507 @@
+#
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# One domain per vendor service, with the transition init needs to leave u:r:init:s0.
+#
+# Every domain here is permissive, deliberately and temporarily. Global permissive is not
+# a substitute: a service started with no transition runs AS init, so servicemanager
+# registration and lookup misbehave and keystore2 cannot reach keymint. Per-domain
+# permissive gives each service its correct identity while the allow rules are still
+# being written from real denials.
+#
+# Remove the permissive lines as each domain's rules are filled in.
+
+type ambience_hub_default, domain;
+init_daemon_domain(ambience_hub_default)
+permissive ambience_hub_default;
+
+type aocd, domain;
+init_daemon_domain(aocd)
+permissive aocd;
+
+type aocdump, domain;
+init_daemon_domain(aocdump)
+permissive aocdump;
+
+type aocxd, domain;
+init_daemon_domain(aocxd)
+permissive aocxd;
+
+type battery_mitigation, domain;
+init_daemon_domain(battery_mitigation)
+permissive battery_mitigation;
+
+type block_queue_depth, domain;
+init_daemon_domain(block_queue_depth)
+permissive block_queue_depth;
+
+type cbd, domain;
+init_daemon_domain(cbd)
+permissive cbd;
+
+type chre, domain;
+init_daemon_domain(chre)
+permissive chre;
+
+type dbg_ctrl, domain;
+init_daemon_domain(dbg_ctrl)
+permissive dbg_ctrl;
+
+type devcoredump_action, domain;
+init_daemon_domain(devcoredump_action)
+permissive devcoredump_action;
+
+type disable_contaminant_detection, domain;
+init_daemon_domain(disable_contaminant_detection)
+permissive disable_contaminant_detection;
+
+type dmd, domain;
+init_daemon_domain(dmd)
+permissive dmd;
+
+type dump_aoc, domain;
+init_daemon_domain(dump_aoc)
+permissive dump_aoc;
+
+type dump_bcmbt, domain;
+init_daemon_domain(dump_bcmbt)
+permissive dump_bcmbt;
+
+type dump_bootlogs_bldr, domain;
+init_daemon_domain(dump_bootlogs_bldr)
+permissive dump_bootlogs_bldr;
+
+type dump_camera, domain;
+init_daemon_domain(dump_camera)
+permissive dump_camera;
+
+type dump_cpm, domain;
+init_daemon_domain(dump_cpm)
+permissive dump_cpm;
+
+type dump_devfreq, domain;
+init_daemon_domain(dump_devfreq)
+permissive dump_devfreq;
+
+type dump_dwc3, domain;
+init_daemon_domain(dump_dwc3)
+permissive dump_dwc3;
+
+type dump_firmware, domain;
+init_daemon_domain(dump_firmware)
+permissive dump_firmware;
+
+type dump_gps, domain;
+init_daemon_domain(dump_gps)
+permissive dump_gps;
+
+type dump_gsa, domain;
+init_daemon_domain(dump_gsa)
+permissive dump_gsa;
+
+type dump_gsc, domain;
+init_daemon_domain(dump_gsc)
+permissive dump_gsc;
+
+type dump_gxp, domain;
+init_daemon_domain(dump_gxp)
+permissive dump_gxp;
+
+type dump_interrupts_traces, domain;
+init_daemon_domain(dump_interrupts_traces)
+permissive dump_interrupts_traces;
+
+type dump_iommu, domain;
+init_daemon_domain(dump_iommu)
+permissive dump_iommu;
+
+type dump_mailbox, domain;
+init_daemon_domain(dump_mailbox)
+permissive dump_mailbox;
+
+type dump_memory, domain;
+init_daemon_domain(dump_memory)
+permissive dump_memory;
+
+type dump_modem_log, domain;
+init_daemon_domain(dump_modem_log)
+permissive dump_modem_log;
+
+type dump_modem_syslog, domain;
+init_daemon_domain(dump_modem_syslog)
+permissive dump_modem_syslog;
+
+type dump_pcie, domain;
+init_daemon_domain(dump_pcie)
+permissive dump_pcie;
+
+type dump_perf, domain;
+init_daemon_domain(dump_perf)
+permissive dump_perf;
+
+type dump_pixel_display, domain;
+init_daemon_domain(dump_pixel_display)
+permissive dump_pixel_display;
+
+type dump_pixel_display_userdebug, domain;
+init_daemon_domain(dump_pixel_display_userdebug)
+permissive dump_pixel_display_userdebug;
+
+type dump_pixel_metrics, domain;
+init_daemon_domain(dump_pixel_metrics)
+permissive dump_pixel_metrics;
+
+type dump_pixel_second_display, domain;
+init_daemon_domain(dump_pixel_second_display)
+permissive dump_pixel_second_display;
+
+type dump_power, domain;
+init_daemon_domain(dump_power)
+permissive dump_power;
+
+type dump_ramdump, domain;
+init_daemon_domain(dump_ramdump)
+permissive dump_ramdump;
+
+type dump_sensors, domain;
+init_daemon_domain(dump_sensors)
+permissive dump_sensors;
+
+type dump_soc, domain;
+init_daemon_domain(dump_soc)
+permissive dump_soc;
+
+type dump_storage, domain;
+init_daemon_domain(dump_storage)
+permissive dump_storage;
+
+type dump_telemetry, domain;
+init_daemon_domain(dump_telemetry)
+permissive dump_telemetry;
+
+type dump_thermal, domain;
+init_daemon_domain(dump_thermal)
+permissive dump_thermal;
+
+type dump_tpu, domain;
+init_daemon_domain(dump_tpu)
+permissive dump_tpu;
+
+type dump_trusty, domain;
+init_daemon_domain(dump_trusty)
+permissive dump_trusty;
+
+type dump_uwb, domain;
+init_daemon_domain(dump_uwb)
+permissive dump_uwb;
+
+type edgetpu_dba_server, domain;
+init_daemon_domain(edgetpu_dba_server)
+permissive edgetpu_dba_server;
+
+type edgetpu_logging, domain;
+init_daemon_domain(edgetpu_logging)
+permissive edgetpu_logging;
+
+type edgetpu_tachyon_server, domain;
+init_daemon_domain(edgetpu_tachyon_server)
+permissive edgetpu_tachyon_server;
+
+type edgetpu_vendor_server, domain;
+init_daemon_domain(edgetpu_vendor_server)
+permissive edgetpu_vendor_server;
+
+type flood_control, domain;
+init_daemon_domain(flood_control)
+permissive flood_control;
+
+type gia, domain;
+init_daemon_domain(gia)
+permissive gia;
+
+type giadiagnose, domain;
+init_daemon_domain(giadiagnose)
+permissive giadiagnose;
+
+type gnss_daemon, domain;
+init_daemon_domain(gnss_daemon)
+permissive gnss_daemon;
+
+type gnss_dbg_ctrl, domain;
+init_daemon_domain(gnss_dbg_ctrl)
+permissive gnss_dbg_ctrl;
+
+type gnss_fw_log, domain;
+init_daemon_domain(gnss_fw_log)
+permissive gnss_fw_log;
+
+type gnss_manager, domain;
+init_daemon_domain(gnss_manager)
+permissive gnss_manager;
+
+type gxp_logging, domain;
+init_daemon_domain(gxp_logging)
+permissive gxp_logging;
+
+type hal_audiometricext_default, domain;
+init_daemon_domain(hal_audiometricext_default)
+permissive hal_audiometricext_default;
+
+type hal_drm_clearkey, domain;
+init_daemon_domain(hal_drm_clearkey)
+permissive hal_drm_clearkey;
+
+type hal_fingerprint_capacitance, domain;
+init_daemon_domain(hal_fingerprint_capacitance)
+permissive hal_fingerprint_capacitance;
+
+type hal_googlebattery, domain;
+init_daemon_domain(hal_googlebattery)
+permissive hal_googlebattery;
+
+type hal_neuralnetworks_darwinn, domain;
+init_daemon_domain(hal_neuralnetworks_darwinn)
+permissive hal_neuralnetworks_darwinn;
+
+type hal_plat_security, domain;
+init_daemon_domain(hal_plat_security)
+permissive hal_plat_security;
+
+type hal_radioext_default, domain;
+init_daemon_domain(hal_radioext_default)
+permissive hal_radioext_default;
+
+type hal_secure_element_st54spi_aidl, domain;
+init_daemon_domain(hal_secure_element_st54spi_aidl)
+permissive hal_secure_element_st54spi_aidl;
+
+type hal_secure_element_uicc, domain;
+init_daemon_domain(hal_secure_element_uicc)
+permissive hal_secure_element_uicc;
+
+type hal_usb_gadget_impl, domain;
+init_daemon_domain(hal_usb_gadget_impl)
+permissive hal_usb_gadget_impl;
+
+type hal_usb_impl, domain;
+init_daemon_domain(hal_usb_impl)
+permissive hal_usb_impl;
+
+type hal_uwb_vendor_default, domain;
+init_daemon_domain(hal_uwb_vendor_default)
+permissive hal_uwb_vendor_default;
+
+type hal_wireless_charger, domain;
+init_daemon_domain(hal_wireless_charger)
+permissive hal_wireless_charger;
+
+type hal_wlcservice, domain;
+init_daemon_domain(hal_wlcservice)
+permissive hal_wlcservice;
+
+type imagecodec_google, domain;
+init_daemon_domain(imagecodec_google)
+permissive imagecodec_google;
+
+type imsmediahaldaemon, domain;
+init_daemon_domain(imsmediahaldaemon)
+permissive imsmediahaldaemon;
+
+type init-camera-set-interrupts-ownership, domain;
+init_daemon_domain(init-camera-set-interrupts-ownership)
+permissive init-camera-set-interrupts-ownership;
+
+type init-mm-logging-sh, domain;
+init_daemon_domain(init-mm-logging-sh)
+permissive init-mm-logging-sh;
+
+type init-thermal-logging-sh, domain;
+init_daemon_domain(init-thermal-logging-sh)
+permissive init-thermal-logging-sh;
+
+type init-thermal-symlinks-sh, domain;
+init_daemon_domain(init-thermal-symlinks-sh)
+permissive init-thermal-symlinks-sh;
+
+type init_qfp, domain;
+init_daemon_domain(init_qfp)
+permissive init_qfp;
+
+type init_rdbl, domain;
+init_daemon_domain(init_rdbl)
+permissive init_rdbl;
+
+type insmod-sh, domain;
+init_daemon_domain(insmod-sh)
+permissive insmod-sh;
+
+type lbs_service, domain;
+init_daemon_domain(lbs_service)
+permissive lbs_service;
+
+type md_rfs, domain;
+init_daemon_domain(md_rfs)
+permissive md_rfs;
+
+type md_rfs_reset_nvram, domain;
+init_daemon_domain(md_rfs_reset_nvram)
+permissive md_rfs_reset_nvram;
+
+type mdl_coll, domain;
+init_daemon_domain(mdl_coll)
+permissive mdl_coll;
+
+type mdl_ctrl, domain;
+init_daemon_domain(mdl_ctrl)
+permissive mdl_ctrl;
+
+type mediacodec_google, domain;
+init_daemon_domain(mediacodec_google)
+permissive mediacodec_google;
+
+type metad, domain;
+init_daemon_domain(metad)
+permissive metad;
+
+type modem_checker, domain;
+init_daemon_domain(modem_checker)
+permissive modem_checker;
+
+type modem_logging, domain;
+init_daemon_domain(modem_logging)
+permissive modem_logging;
+
+type modem_ml_svc_sit, domain;
+init_daemon_domain(modem_ml_svc_sit)
+permissive modem_ml_svc_sit;
+
+type mtk_hal_secure_element, domain;
+init_daemon_domain(mtk_hal_secure_element)
+permissive mtk_hal_secure_element;
+
+type mtk_remotefsd, domain;
+init_daemon_domain(mtk_remotefsd)
+permissive mtk_remotefsd;
+
+type mtk_thinmd, domain;
+init_daemon_domain(mtk_thinmd)
+permissive mtk_thinmd;
+
+type muxreport, domain;
+init_daemon_domain(muxreport)
+permissive muxreport;
+
+type nvram_daemon, domain;
+init_daemon_domain(nvram_daemon)
+permissive nvram_daemon;
+
+type pcie_power, domain;
+init_daemon_domain(pcie_power)
+permissive pcie_power;
+
+type pixel-experiments-recovery-sh, domain;
+init_daemon_domain(pixel-experiments-recovery-sh)
+permissive pixel-experiments-recovery-sh;
+
+type pixel-thermal-control-sh, domain;
+init_daemon_domain(pixel-thermal-control-sh)
+permissive pixel-thermal-control-sh;
+
+type pixel_irq_load_balancer, domain;
+init_daemon_domain(pixel_irq_load_balancer)
+permissive pixel_irq_load_balancer;
+
+type pixelstats_vendor, domain;
+init_daemon_domain(pixelstats_vendor)
+permissive pixelstats_vendor;
+
+type pwrctl_cmd, domain;
+init_daemon_domain(pwrctl_cmd)
+permissive pwrctl_cmd;
+
+type ramdump, domain;
+init_daemon_domain(ramdump)
+permissive ramdump;
+
+type rebalance_interrupts_vendor, domain;
+init_daemon_domain(rebalance_interrupts_vendor)
+permissive rebalance_interrupts_vendor;
+
+type rfsd, domain;
+init_daemon_domain(rfsd)
+permissive rfsd;
+
+type sap_log, domain;
+init_daemon_domain(sap_log)
+permissive sap_log;
+
+type set_fg_model, domain;
+init_daemon_domain(set_fg_model)
+permissive set_fg_model;
+
+type sg_util, domain;
+init_daemon_domain(sg_util)
+permissive sg_util;
+
+type shared_modem_platform, domain;
+init_daemon_domain(shared_modem_platform)
+permissive shared_modem_platform;
+
+type storage_init, domain;
+init_daemon_domain(storage_init)
+permissive storage_init;
+
+type storage_intelligence, domain;
+init_daemon_domain(storage_intelligence)
+permissive storage_intelligence;
+
+type tcpdump_logger, domain;
+init_daemon_domain(tcpdump_logger)
+permissive tcpdump_logger;
+
+type trusty_apploader, domain;
+init_daemon_domain(trusty_apploader)
+permissive trusty_apploader;
+
+type trusty_metricsd, domain;
+init_daemon_domain(trusty_metricsd)
+permissive trusty_metricsd;
+
+type twoshay, domain;
+init_daemon_domain(twoshay)
+permissive twoshay;
+
+type ufs_firmware_update, domain;
+init_daemon_domain(ufs_firmware_update)
+permissive ufs_firmware_update;
+
+type usboffmode, domain;
+init_daemon_domain(usboffmode)
+permissive usboffmode;
+
+type vcd, domain;
+init_daemon_domain(vcd)
+permissive vcd;
+
+type vendor_aical_plugin, domain;
+init_daemon_domain(vendor_aical_plugin)
+permissive vendor_aical_plugin;
+
+type vendor_uwb_init, domain;
+init_daemon_domain(vendor_uwb_init)
+permissive vendor_uwb_init;
+
+type vmdd, domain;
+init_daemon_domain(vmdd)
+permissive vmdd;
+
+type wifi_perf_diag, domain;
+init_daemon_domain(wifi_perf_diag)
+permissive wifi_perf_diag;
+
+type wifi_sniffer, domain;
+init_daemon_domain(wifi_sniffer)
+permissive wifi_sniffer;
+

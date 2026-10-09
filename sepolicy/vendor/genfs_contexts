@@ -1,0 +1,1 @@
+genfscon sysfs /devices/platform/ebf1000.spmi/spmi-0/0-02/i2c-24/24-0030 u:object_r:sysfs_wlc:s0

@@ -1,7 +1,9 @@
 # CrDroid Pixel 11 (`cubs`)
 
 Early Android 17 / CrDroid 17 device-tree bring-up for the base Google Pixel 11.
-This is an **untested work in progress**, not a build-ready or flashable ROM.
+This tree now includes stock-backed fstab/VINTF, AVB, sepolicy wiring, and
+boot/vbmeta partition layout for `cubs`. A full ROM build test is still
+required before flashing.
 
 ## Verified target
 
@@ -22,7 +24,7 @@ there and must be checked against this device's stock images before producing im
 ## Source projects
 
 The local manifest syncs:
-- Proprietary blobs can be found on my gitlab (https://gitlab.com/gabrielallan35)
+- Proprietary blobs are intentionally hosted outside this public repository.
 
 - [Espada kernel fork](https://github.com/xs37/espada-kernel-KSU-Susfs),
   branch `Base`. The generated `boot` and `vendor_kernel_boot` images must stay matched.
@@ -35,7 +37,7 @@ The local manifest syncs:
 
 The kernel and recovery source are hosted in their own repositories and fetched
 by the local manifest; they are not copied into this device-tree repository.
-No Google stock images, extracted proprietary blobs. those are on labs
+No stock partition images or proprietary blobs are committed here.
 
 ## Stock configuration and blob candidates
 
@@ -56,12 +58,11 @@ stock module references only; the proprietary module binaries are extracted
 locally and are not committed here. The product configuration stages the stock
 module load order and blocklist plus the Cubs-specific module-init config.
 Selected graphics, keystore, gatekeeper, and SoC manufacturer properties come
-from the stock vendor build properties; the proprietary SELinux contexts and
-vendor policy are also extraction references, not committed files.
-Presence on stock does not establish that every candidate is needed or
-appropriate for this product; validate the generated vendor tree before
-attempting a build. The vendor list also includes stock RRO overlays,
-capability XMLs, and vendor init scripts as extraction references.
+from the stock vendor build properties. Stock SELinux blob entries remain in the
+candidate list but are skipped by `skip-files-vendor.txt`, so policy is built
+from source rather than copied from stock binaries. The vendor list also
+includes stock RRO overlays, capability XMLs, and vendor init scripts as
+extraction references.
 
 The local stock partition images and extracted files are stored outside this
 repository. They contain proprietary firmware and must not be committed or
@@ -88,7 +89,8 @@ kernel source, the OrangeFox recovery source, and the Yogi reference tree.
 
 ## Verification status
 
-Checked against the local stock dump (no ROM build has been run):
+Checked against the local stock dump and connected device (no full ROM build has
+been completed yet):
 
 - `vintf/manifest.xml` and `vintf/compatibility_matrix.xml` are byte-identical to
   the stock vendor files.
@@ -99,33 +101,33 @@ Checked against the local stock dump (no ROM build has been run):
   and system_dlkm sizes.
 - `system_dlkm.modules.load` and `.blocklist` are identical to stock, and every
   `proprietary-files-system-dlkm.txt` entry exists in the extracted blobs.
+- `adb`-verified runtime values are wired in `BoardConfig.mk`: `armv9-a`,
+  `cortex-a55`, boot header v4, `BOARD_BOOTCONFIG` for UFS/module loading, and
+  the stock `vendor_boot` command-line subset used by first-stage init.
+- AVB chain layout is now defined (`vbmeta_system`, `vbmeta_vendor`,
+  rollback-index locations and sha256 hashtrees), matching the stock partition
+  structure.
+- Vendor sepolicy is wired through `sepolicy/vendor` plus shared Pixel policy
+  directories, and Wi-Fi board settings are included.
 
-## Not ready to build or flash
+## Remaining build blockers
 
-This is device-tree source setup, not a ROM build. Before the tree can be
-considered build-ready, the `cubs` port still needs:
+Before the `cubs` port can be considered fully build-ready:
 
 - A generated local `vendor/google/cubs` tree from the stock partitions. The
   actual proprietary files are intentionally not included here.
 
-- Device-specific overlays and SELinux policy (`BOARD_VENDOR_SEPOLICY_DIRS` is
-  not set), plus validation of the included VINTF files against the synced
-  Android 17 source. The stock `vendor/etc/selinux/*` files listed in
-  `proprietary-files-vendor.txt` may conflict with build-generated policy.
+- A complete crDroid 17 source sync and an actual `cubs` build run to validate
+  Soong/Make and VINTF at build time.
 
-- AVB configuration: no `BOARD_AVB_*` settings exist yet. The stock `vbmeta`
-  chain layout (vbmeta_system for system/system_ext/product/system_dlkm,
-  vbmeta_vendor for vendor, vendor_dlkm in `vbmeta`) is reflected in the fstab only.
+- Local proprietary vendor content must include the required prebuilt kernel and
+  DTBO artifacts expected by `BoardConfig.mk`:
+  `vendor/google/cubs/proprietary/Image.lz4` and
+  `vendor/google/cubs/proprietary/dtbo.img`.
 
-- The `vendor_boot` kernel command line and bootconfig, DTBO, and the boot-family
-  image sizes in `BoardConfig.mk`. These need the connected phone to re-read
-  (`/proc/cmdline` and the boot-family partitions); the saved boot images are unusable.
-
-- A verified integration path for the selected kernel branch's outputs,
-  including matching `boot` and `vendor_kernel_boot` images, ABI-compatible
-  vendor modules, and the matching `system_dlkm` module set. Branch `Base` is the
-  ACK 6.12.92 tree with the espada changes and does not itself contain the
-  spacecraft SoC or device sources.
+- Kernel output integration still needs validation for the selected kernel flow
+  (prebuilt Image.lz4 vs. generated output), including matching
+  `vendor_kernel_boot` and ABI-compatible modules.
 
 - A successful build and device bring-up test on the Pixel 11.
 

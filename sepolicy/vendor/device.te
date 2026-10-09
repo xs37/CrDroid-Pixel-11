@@ -1,0 +1,3 @@
+# thermal_symlinks populates /dev/thermal with links to the thermal_zone and
+# cooling_device sysfs nodes, which is what the power and thermal HALs read.
+type thermal_link_device, dev_type;

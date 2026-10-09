@@ -1,0 +1,3 @@
+require board=cubs
+require version-bootloader=spacecraft-17.4-16238327
+require version-baseband=a900a-mp_260716-260716-m-15880348

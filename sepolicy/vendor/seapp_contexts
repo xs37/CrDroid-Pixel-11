@@ -1,0 +1,5 @@
+# Recovered from stock's compiled contexts. These key on the whole line, not the first
+# field -- every entry starts user=_app, so deduping by field one collapses them.
+user=_app seinfo=platform name=com.android.ramdump domain=ramdump_app type=app_data_file levelFrom=all
+user=_app seinfo=platform name=com.google.googlecbrs domain=cbrs_setup_app type=app_data_file levelFrom=user
+user=_app seinfo=platform name=com.google.android.hardwareinfo domain=hardware_info_app type=app_data_file levelFrom=all

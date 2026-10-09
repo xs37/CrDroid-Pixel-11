@@ -1,0 +1,5 @@
+type sysfs_wlc, fs_type, sysfs_type;
+
+# Labels carried inside the vendor apexes we ship, and the firmware tree.
+type hal_drm_widevine_exec, exec_type, file_type, vendor_file_type;
+type vendor_fw_file, file_type, vendor_file_type;
