@@ -22,7 +22,7 @@ there and must be checked against this device's stock images before producing im
 ## Source projects
 
 The local manifest syncs:
-
+- Proprietary blobs can be found on my gitlab (https://gitlab.com/gabrielallan35)
 - [Espada kernel fork](https://github.com/xs37/espada-kernel-KSU-Susfs),
   branch `Base`. The generated `boot` and `vendor_kernel_boot` images must stay matched.
 - [OrangeFox recovery fork](https://github.com/xs37/yogi-orangefox), branch

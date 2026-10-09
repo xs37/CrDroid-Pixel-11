@@ -59,5 +59,10 @@ module.add_generated_proprietary_file(
     partition="vendor_dlkm",
 )
 
+module.add_generated_proprietary_file(
+    "proprietary-files-system-dlkm.txt",
+    partition="system_dlkm",
+)
+
 if __name__ == "__main__":
     ExtractUtils.device(module).run()

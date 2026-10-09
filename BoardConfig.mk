@@ -83,6 +83,18 @@ ifneq ($(strip $(CUBS_VENDOR_KERNEL_MODULES_MISSING)),)
 $(error Missing required stock cubs vendor_dlkm modules: $(CUBS_VENDOR_KERNEL_MODULES_MISSING))
 endif
 
+# The stock system_dlkm modules are extracted locally and remain proprietary.
+CUBS_SYSTEM_KERNEL_MODULES_DIR := $(VENDOR_PATH)/proprietary/system_dlkm/lib/modules
+CUBS_SYSTEM_KERNEL_MODULES_LOAD_FILE := $(DEVICE_PATH)/system_dlkm.modules.load
+ifeq ($(wildcard $(CUBS_SYSTEM_KERNEL_MODULES_LOAD_FILE)),)
+$(error Missing $(CUBS_SYSTEM_KERNEL_MODULES_LOAD_FILE))
+endif
+CUBS_SYSTEM_KERNEL_MODULES := $(strip $(shell cat $(CUBS_SYSTEM_KERNEL_MODULES_LOAD_FILE)))
+CUBS_SYSTEM_KERNEL_MODULES_MISSING := $(foreach module,$(CUBS_SYSTEM_KERNEL_MODULES),$(if $(wildcard $(CUBS_SYSTEM_KERNEL_MODULES_DIR)/$(module)),,$(module)))
+ifneq ($(strip $(CUBS_SYSTEM_KERNEL_MODULES_MISSING)),)
+$(error Missing required stock cubs system_dlkm modules: $(CUBS_SYSTEM_KERNEL_MODULES_MISSING))
+endif
+
 ifeq ($(wildcard $(VENDOR_PATH)/BoardConfigVendor.mk),)
 $(error Missing $(VENDOR_PATH)/BoardConfigVendor.mk. Extract the local cubs vendor files before building.)
 endif

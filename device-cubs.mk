@@ -37,7 +37,9 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/rootdir/etc/fstab.malibu:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.malibu \
     $(DEVICE_PATH)/vendor_dlkm/init.insmod.cubs.cfg:$(TARGET_COPY_OUT_VENDOR_DLKM)/etc/init.insmod.cubs.cfg \
     $(DEVICE_PATH)/vendor_dlkm.modules.load:$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules/modules.load \
-    $(DEVICE_PATH)/vendor_dlkm.modules.blocklist:$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules/modules.blocklist
+    $(DEVICE_PATH)/vendor_dlkm.modules.blocklist:$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules/modules.blocklist \
+    $(DEVICE_PATH)/system_dlkm.modules.load:$(TARGET_COPY_OUT_SYSTEM_DLKM)/lib/modules/modules.load \
+    $(DEVICE_PATH)/system_dlkm.modules.blocklist:$(TARGET_COPY_OUT_SYSTEM_DLKM)/lib/modules/modules.blocklist
 
 ifeq ($(wildcard $(VENDOR_PATH)/cubs-vendor.mk),)
 $(error Missing $(VENDOR_PATH)/cubs-vendor.mk. Run extract-files.py with the local cubs stock dump; proprietary files are not included in this repository.)
