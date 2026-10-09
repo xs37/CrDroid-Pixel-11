@@ -96,9 +96,10 @@ considered build-ready, the `cubs` port still needs:
   stock VINTF manifest against the synced Android 17 source.
 - A verified integration path for the selected kernel branch's outputs,
   including matching `boot` and `vendor_kernel_boot` images, ABI-compatible
-  vendor modules, and the matching `system_dlkm` module set. The device shell
-  cannot read the stock `system_dlkm` module directory, so this still needs to
-  come from the kernel build or another verified stock extraction.
+  vendor modules, and the matching `system_dlkm` module set. The stock
+  `system_dlkm` partition has been extracted from the local dump and its module
+  manifest and staging files are now integrated, while the binaries remain in
+  local storage (`D:\Blobs\system_dlkm`).
 - Verification of the partition group, boot headers, DTBO, AVB, and recovery
   configuration against the `cubs` stock images.
 - A successful build and device bring-up test on the Pixel 11.
