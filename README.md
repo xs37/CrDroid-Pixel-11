@@ -23,18 +23,19 @@ there and must be checked against this device's stock images before producing im
 
 The local manifest syncs:
 - Proprietary blobs can be found on my gitlab (https://gitlab.com/gabrielallan35)
+
 - [Espada kernel fork](https://github.com/xs37/espada-kernel-KSU-Susfs),
   branch `Base`. The generated `boot` and `vendor_kernel_boot` images must stay matched.
+
 - [OrangeFox recovery fork](https://github.com/xs37/yogi-orangefox), branch
   `main`. This is a recovery tree, not the Android ROM device tree.
-- [Yogi Android 17 tree](https://github.com/asdfmonster261/android_device_google_yogi),
-  branch `lineage-24.0`, as a porting reference only!
+
+- [Yogi Android 17 Reference tree](https://github.com/asdfmonster261/android_device_google_yogi),
+  branch `lineage-24.0`, as a Tree porting reference only!
 
 The kernel and recovery source are hosted in their own repositories and fetched
 by the local manifest; they are not copied into this device-tree repository.
-No Google stock images, extracted proprietary blobs, or build outputs belong in
-any public repository. Keep locally extracted files under `vendor/google/cubs`
-in the Android source checkout and do not publish them.
+No Google stock images, extracted proprietary blobs. those are on labs
 
 ## Stock configuration and blob candidates
 
@@ -91,16 +92,17 @@ considered build-ready, the `cubs` port still needs:
 
 - A generated local `vendor/google/cubs` tree from the stock partitions. The
   actual proprietary files are intentionally not included here.
+
 - Device-specific overlays and SELinux policy, plus validation of the included
   stock VINTF manifest against the synced Android 17 source.
+
 - A verified integration path for the selected kernel branch's outputs,
   including matching `boot` and `vendor_kernel_boot` images, ABI-compatible
-  vendor modules, and the matching `system_dlkm` module set. The stock
-  `system_dlkm` partition has been extracted from the local dump and its module
-  manifest and staging files are now integrated, while the binaries remain in
-  local storage (`D:\Blobs\system_dlkm`).
+  vendor modules, and the matching `system_dlkm` module set.
+
 - Verification of the partition group, boot headers, DTBO, AVB, and recovery
   configuration against the `cubs` stock images.
+
 - A successful build and device bring-up test on the Pixel 11.
 
 The product files stop with a clear error until the local proprietary vendor
