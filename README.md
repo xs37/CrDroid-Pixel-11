@@ -39,8 +39,9 @@ No Google stock images, extracted proprietary blobs. those are on labs
 
 ## Stock configuration and blob candidates
 
-The stock `cubs` vendor VINTF manifest is included at
-[`vintf/manifest.xml`](vintf/manifest.xml). The first-stage fstab at
+The stock `cubs` vendor VINTF manifest and device compatibility matrix are included
+at [`vintf/manifest.xml`](vintf/manifest.xml) and
+[`vintf/compatibility_matrix.xml`](vintf/compatibility_matrix.xml). The first-stage fstab at
 [`rootdir/etc/fstab.malibu`](rootdir/etc/fstab.malibu) and recovery fstab at
 [`recovery/recovery.fstab`](recovery/recovery.fstab) are source configuration
 derived from the local stock dump. The product makefile stages the first-stage
@@ -85,6 +86,20 @@ repo sync -c -j"$(nproc --all)"
 The manifest checks out this repository at `device/google/cubs`, the Espada
 kernel source, the OrangeFox recovery source, and the Yogi reference tree.
 
+## Verification status
+
+Checked against the local stock dump (no ROM build has been run):
+
+- `vintf/manifest.xml` and `vintf/compatibility_matrix.xml` are byte-identical to
+  the stock vendor files.
+- `rootdir/etc/fstab.malibu` matches stock `vendor/etc/fstab.malibu`;
+  `recovery/recovery.fstab` differs only in the USB mount type.
+- The `super` logical-partition metadata matches `BoardConfig.mk`: group size
+  10,733,223,936 bytes, and the system, system_ext, product, vendor, vendor_dlkm,
+  and system_dlkm sizes.
+- `system_dlkm.modules.load` and `.blocklist` are identical to stock, and every
+  `proprietary-files-system-dlkm.txt` entry exists in the extracted blobs.
+
 ## Not ready to build or flash
 
 This is device-tree source setup, not a ROM build. Before the tree can be
@@ -93,15 +108,24 @@ considered build-ready, the `cubs` port still needs:
 - A generated local `vendor/google/cubs` tree from the stock partitions. The
   actual proprietary files are intentionally not included here.
 
-- Device-specific overlays and SELinux policy, plus validation of the included
-  stock VINTF manifest against the synced Android 17 source.
+- Device-specific overlays and SELinux policy (`BOARD_VENDOR_SEPOLICY_DIRS` is
+  not set), plus validation of the included VINTF files against the synced
+  Android 17 source. The stock `vendor/etc/selinux/*` files listed in
+  `proprietary-files-vendor.txt` may conflict with build-generated policy.
+
+- AVB configuration: no `BOARD_AVB_*` settings exist yet. The stock `vbmeta`
+  chain layout (vbmeta_system for system/system_ext/product/system_dlkm,
+  vbmeta_vendor for vendor, vendor_dlkm in `vbmeta`) is reflected in the fstab only.
+
+- The `vendor_boot` kernel command line and bootconfig, DTBO, and the boot-family
+  image sizes in `BoardConfig.mk`. These need the connected phone to re-read
+  (`/proc/cmdline` and the boot-family partitions); the saved boot images are unusable.
 
 - A verified integration path for the selected kernel branch's outputs,
   including matching `boot` and `vendor_kernel_boot` images, ABI-compatible
-  vendor modules, and the matching `system_dlkm` module set.
-
-- Verification of the partition group, boot headers, DTBO, AVB, and recovery
-  configuration against the `cubs` stock images.
+  vendor modules, and the matching `system_dlkm` module set. Branch `Base` is the
+  ACK 6.12.92 tree with the espada changes and does not itself contain the
+  spacecraft SoC or device sources.
 
 - A successful build and device bring-up test on the Pixel 11.
 
