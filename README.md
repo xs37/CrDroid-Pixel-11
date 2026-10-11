@@ -22,21 +22,16 @@ there and must be checked against this device's stock images before producing im
 
 ## Source projects
 
-The local manifest syncs:
-- Proprietary blobs are intentionally hosted outside this public repository. (https://gitlab.com/gabrielallan35/pixel-11-blobs/-/tree/master?ref_type=heads)
+The local manifest syncs this device tree to `device/google/cubs` and the private
+proprietary vendor tree to `vendor/google/cubs`. The latter is maintained in the
+[Pixel 11 blobs GitLab repository](https://gitlab.com/gabrielallan35/pixel-11-blobs)
+and requires GitLab access. The blobs remain outside this public repository.
 
 - [Espada kernel fork](https://github.com/xs37/espada-kernel-KSU-Susfs),
   branch `Base`. The generated `boot` and `vendor_kernel_boot` images must stay matched.
 
-- [OrangeFox recovery fork](https://github.com/xs37/yogi-orangefox), branch
-  `main`. This is a recovery tree, not the Android ROM device tree.
-
-- [Yogi Android 17 Reference tree](https://github.com/asdfmonster261/android_device_google_yogi),
-  branch `lineage-24.0`, as a Tree porting reference only!
-
-The kernel and recovery source are hosted in their own repositories and fetched
-by the local manifest; they are not copied into this device-tree repository.
-No stock partition images or proprietary blobs are committed here.
+The kernel source is fetched as a separate project. No stock partition images
+or proprietary blobs are committed to this public device-tree repository.
 
 ## Stock configuration and blob candidates
 
@@ -53,8 +48,8 @@ vendor_boot recovery layout.
 The `proprietary-files*.txt` files and `extract-files.py` are a stock-backed
 extraction setup. Candidate paths were checked against the local `cubs` dump,
 including the separate `vendor_dlkm` partition. The `vendor_dlkm` list contains
-stock module references only; the proprietary module binaries are extracted
-locally and are not committed here. The product configuration stages the stock
+stock module references; the proprietary module binaries are held in the private
+vendor project rather than this public repository. The product configuration stages the stock
 module load order and blocklist plus the Cubs-specific module-init config.
 Selected graphics, keystore, gatekeeper, and SoC manufacturer properties come
 from the stock vendor build properties. Stock SELinux blob entries remain in the
@@ -65,9 +60,12 @@ extraction references.
 
 ## Sync on the Linux build desktop
 
-Install the Android build prerequisites on the desktop, then initialize Rom Source and sync the source projects:
+Install the Android build prerequisites, including Git LFS, then initialize the ROM
+source and sync the projects. Authenticate to GitLab first so `repo sync` can fetch
+the private vendor project and its LFS objects:
 
 ```sh
+git lfs install
 mkdir -p ~/android/crdroid-cubs
 cd ~/android/crdroid-cubs
 repo init -u https://github.com/crdroidandroid/android.git -b 17.0
@@ -78,8 +76,10 @@ curl -fL \
 repo sync -c -j"$(nproc --all)"
 ```
 
-The manifest checks out this repository at `device/google/cubs`, the Espada
-kernel source, the OrangeFox recovery source, and the Yogi reference tree.
+The manifest checks out this repository at `device/google/cubs`, the private
+vendor tree at `vendor/google/cubs`, and the Espada kernel source at
+`kernel/google/spacecraft`. The device and vendor directories are populated by
+syncing those projects; no manual copy of the vendor tree is required.
 
 ## Verification status
 
@@ -104,26 +104,14 @@ been completed yet):
 - Vendor sepolicy is wired through `sepolicy/vendor` plus shared Pixel policy
   directories, and Wi-Fi board settings are included.
 
-## Remaining build blockers
+## Build validation status
 
-Before the `cubs` port can be considered fully build-ready:
-
-- A generated local `vendor/google/cubs` tree from the stock partitions. The
-  actual proprietary files are intentionally not included here.
-
-- A complete crDroid 17 source sync and an actual `cubs` build run to validate
-  Soong/Make and VINTF at build time.
-
-- Local proprietary vendor content must include the required prebuilt kernel and
-  DTBO artifacts expected by `BoardConfig.mk`:
-  `vendor/google/cubs/proprietary/Image.lz4` and
-  `vendor/google/cubs/proprietary/dtbo.img`.
-
-- Kernel output integration still needs validation for the selected kernel flow
-  (prebuilt Image.lz4 vs. generated output), including matching
-  `vendor_kernel_boot` and ABI-compatible modules.
-
-- A successful build and device bring-up test on the Pixel 11.
+The private vendor project contains the generated makefiles and the proprietary
+files referenced by this device tree, including
+`vendor/google/cubs/proprietary/Image.lz4` and `dtbo.img`. The source setup
+populates both device and vendor trees through the manifest. A complete ROM
+build and on-device bring-up have not been completed; do not flash artifacts
+from this WIP until those checks pass.
 
 The product files stop with a clear error until the local proprietary vendor
 tree exists. Do not flash artifacts from this WIP!
