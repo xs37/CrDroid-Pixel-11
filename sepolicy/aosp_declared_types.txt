@@ -159,6 +159,7 @@ rebootescrow_device
 rild
 rild_exec
 tee_exec
+vendor_chre_hal_prop
 vendor_install_recovery
 vendor_install_recovery_exec
 vendor_rootdev

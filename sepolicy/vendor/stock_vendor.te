@@ -21,7 +21,6 @@ attribute hal_imagecodec_google;
 attribute hal_imagecodec_google_client;
 attribute hal_imagecodec_google_server;
 
-type vendor_chre_hal_prop;
 type vendor_wlc_file;
 type hal_wlcservice;
 type hal_wlcservice_exec;
@@ -2908,7 +2907,6 @@ type_transition init hal_googlebattery_exec:process hal_googlebattery;
 type_transition hardware_info_app hardware_info_app:anon_inode hardware_info_app_wrapfd "[wrapfd]";
 type_transition hardware_info_app hardware_info_app:anon_inode hardware_info_app_block_io_uring "[io_uring]";
 type_transition hardware_info_app hardware_info_app:anon_inode hardware_info_app_userfaultfd "[userfaultfd]";
-type_transition hal_wifi_supplicant_default wifi_data_file:dir wpa_socket "sockets";
 
 allow init hal_atrace_default_exec:file { read getattr map execute open };
 allow init hal_atrace_default:process { transition };
