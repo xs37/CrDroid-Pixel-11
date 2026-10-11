@@ -6,6 +6,12 @@ import sys
 from collections import OrderedDict
 
 src, out_te, out_genfs = sys.argv[1:4]
+# Optional list of types that the AOSP vendor policy already declares; redeclaring
+# them is a compile error, so only their attribute membership and rules are kept.
+declared_elsewhere = set()
+if len(sys.argv) > 4:
+    with open(sys.argv[4]) as _f:
+        declared_elsewhere = {ln.strip() for ln in _f if ln.strip()}
 
 
 def tokenize(text):
@@ -210,6 +216,8 @@ with open(out_te, "w") as f:
         f.write("attribute %s;\n" % a)
     f.write("\n")
     for t in types:
+        if t in declared_elsewhere:
+            continue
         f.write("type %s;\n" % t)
     f.write("\n")
     for a, _v in expands:
