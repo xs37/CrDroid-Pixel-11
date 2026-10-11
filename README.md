@@ -2,8 +2,7 @@
 
 Early Android 17 / CrDroid 17 device-tree bring-up for the base Google Pixel 11.
 This tree now includes stock-backed fstab/VINTF, AVB, sepolicy wiring, and
-boot/vbmeta partition layout for `cubs`. A full ROM build test is still
-required before flashing.
+boot/vbmeta partition layout for `cubs`. A full ROM build test is still required before flashing.
 
 ## Verified target
 
@@ -64,14 +63,9 @@ from source rather than copied from stock binaries. The vendor list also
 includes stock RRO overlays, capability XMLs, and vendor init scripts as
 extraction references.
 
-The local stock partition images and extracted files are stored outside this
-repository. They contain proprietary firmware and must not be committed or
-uploaded to a public repository.
-
 ## Sync on the Linux build desktop
 
-Install the Android build prerequisites on the desktop, then initialize crDroid
-17 and sync the source projects:
+Install the Android build prerequisites on the desktop, then initialize Rom Source and sync the source projects:
 
 ```sh
 mkdir -p ~/android/crdroid-cubs
@@ -132,4 +126,4 @@ Before the `cubs` port can be considered fully build-ready:
 - A successful build and device bring-up test on the Pixel 11.
 
 The product files stop with a clear error until the local proprietary vendor
-tree exists. Do not flash artifacts from this WIP.
+tree exists. Do not flash artifacts from this WIP!
