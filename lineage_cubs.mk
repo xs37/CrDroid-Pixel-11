@@ -7,6 +7,10 @@ VENDOR_PATH := vendor/google/cubs
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 $(call inherit-product, $(DEVICE_PATH)/aosp_cubs.mk)
 
+# Boot animation resolution (stock panel is 1080x2424).
+TARGET_SCREEN_HEIGHT := 2424
+TARGET_SCREEN_WIDTH := 1080
+
 PRODUCT_NAME := lineage_cubs
 PRODUCT_DEVICE := cubs
 PRODUCT_MODEL := Pixel 11
