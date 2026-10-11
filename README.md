@@ -24,7 +24,7 @@ there and must be checked against this device's stock images before producing im
 ## Source projects
 
 The local manifest syncs:
-- Proprietary blobs are intentionally hosted outside this public repository.
+- Proprietary blobs are intentionally hosted outside this public repository. (https://gitlab.com/gabrielallan35/pixel-11-blobs/-/tree/master?ref_type=heads)
 
 - [Espada kernel fork](https://github.com/xs37/espada-kernel-KSU-Susfs),
   branch `Base`. The generated `boot` and `vendor_kernel_boot` images must stay matched.
