@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<!--
+     EuiccGoogle is a presigned priv-app, so it cannot be granted a signature|privileged
+     permission by signature, and stock keeps its allowlist in a gms file this build does
+     not ship. With ro.control_privapp_permissions=enforce the first missing entry throws
+     out of system_server on boot, so every privileged permission it asks for is listed.
+     SystemConfig merges entries per package, so a gms install adding its own is fine.
+-->
+<permissions>
+    <privapp-permissions package="com.google.android.euicc">
+        <permission name="android.permission.CHANGE_COMPONENT_ENABLED_STATE" />
+        <permission name="android.permission.CONNECTIVITY_USE_RESTRICTED_NETWORKS" />
+        <permission name="android.permission.MANAGE_SUBSCRIPTION_PLANS" />
+        <permission name="android.permission.MODIFY_PHONE_STATE" />
+        <permission name="android.permission.READ_NETWORK_USAGE_HISTORY" />
+        <permission name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
+        <permission name="android.permission.READ_SUBSCRIPTION_PLANS" />
+        <permission name="android.permission.REAL_GET_TASKS" />
+        <permission name="android.permission.REBOOT" />
+        <permission name="android.permission.START_ACTIVITIES_FROM_BACKGROUND" />
+        <permission name="android.permission.START_FOREGROUND_SERVICES_FROM_BACKGROUND" />
+        <permission name="android.permission.WRITE_EMBEDDED_SUBSCRIPTIONS" />
+        <permission name="android.permission.WRITE_SECURE_SETTINGS" />
+        <permission name="com.android.permission.INSTALL_EXISTING_PACKAGES" />
+    </privapp-permissions>
+</permissions>

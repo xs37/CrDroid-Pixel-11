@@ -965,3 +965,84 @@ vendor/etc/selinux/vendor_sepolicy.cil
 vendor/etc/selinux/vendor_service_contexts
 vendor/etc/selinux/vendor_tee_service_contexts
 vendor/etc/selinux/vndservice_contexts
+
+# Added after comparing the stock vendor image against this list. The Qualcomm ultrasonic
+# fingerprint stack (qfp-daemon and its libraries, with the rc and vintf fragment already
+# listed above), display calibration and panel data for both panels, sensor registry,
+# thermal configuration, touch and wifi firmware, and the camera experimental2026 odex.
+# Everything else stock ships and this list omits is built from source by the tree
+# (AIDL, rust and protobuf libraries, the trusty, wifi, clearkey, sensors and secure
+# element HALs) or generated (fs_config, passwd, selinux, linker config).
+vendor/bin/hw/init.h2omg.sh
+vendor/bin/hw/qfp-daemon
+vendor/etc/ambient_estimation_model.tflite
+vendor/etc/bluetooth_power_limits_MX.csv
+vendor/etc/display_colordata_google-dcsda_cal0.pb
+vendor/etc/display_colordata_google-dcsdb_cal0.pb
+vendor/etc/display_golden_google-dcsda_cal0.pb
+vendor/etc/display_golden_google-dcsdb_cal0.pb
+vendor/etc/displayconfig/display_aical_google-dcsda.pb
+vendor/etc/displayconfig/display_aical_google-dcsdb.pb
+vendor/etc/displayconfig/display_cgc_inference_google-dcsda.tflite
+vendor/etc/displayconfig/display_cgc_inference_google-dcsdb.tflite
+vendor/etc/displayconfig/display_cgc_pool_google-dcsda.bin
+vendor/etc/displayconfig/display_cgc_pool_google-dcsdb.bin
+vendor/etc/displayconfig/display_colorcal_desc_data_google-dcsda.pb
+vendor/etc/displayconfig/display_colorcal_desc_data_google-dcsdb.pb
+vendor/etc/displayconfig/display_hbm_regamma_inference_google-dcsda.tflite
+vendor/etc/displayconfig/display_hbm_regamma_inference_google-dcsdb.tflite
+vendor/etc/displayconfig/display_hbm_regamma_pool_google-dcsda.bin
+vendor/etc/displayconfig/display_hbm_regamma_pool_google-dcsdb.bin
+vendor/etc/displayconfig/display_nbm_regamma_inference_google-dcsda.tflite
+vendor/etc/displayconfig/display_nbm_regamma_inference_google-dcsdb.tflite
+vendor/etc/displayconfig/display_nbm_regamma_pool_google-dcsda.bin
+vendor/etc/displayconfig/display_nbm_regamma_pool_google-dcsdb.bin
+vendor/etc/displayconfig/display_sharpness_google-dcsda_0.pb
+vendor/etc/displayconfig/display_sharpness_google-dcsdb_0.pb
+vendor/etc/displayconfig/smoothcal_lut_data-google-dcsda.txt
+vendor/etc/displayconfig/smoothcal_lut_data-google-dcsdb.txt
+vendor/etc/panel_config_google-dcsda_cal0.pb
+vendor/etc/panel_config_google-dcsdb_cal0.pb
+vendor/etc/panel_ctrl_google-dcsdb_cal0.pb
+vendor/etc/sensors/registry/cubs_common.reg
+vendor/etc/sensors/registry/cubs_dvt.reg
+vendor/etc/sensors/registry/cubs_evt_1_1.reg
+vendor/etc/sensors/registry/cubs_proto.reg
+vendor/etc/sysconfig/component-overrides_cubs.xml
+vendor/etc/tcm_test_cfg.ini
+vendor/etc/tcm_test_cfg_b.ini
+vendor/etc/thermal_info_config_ambient.json
+vendor/etc/thermal_info_config_common.json
+vendor/etc/thermal_info_config_stats.json
+vendor/etc/touchflow.pb
+vendor/etc/vintf/manifest/qfp-daemon.xml
+vendor/etc/water-clf.tflite
+vendor/etc/wifi/coex_table.xml
+vendor/firmware/CPS4041_A0_09.bin
+vendor/firmware/bcmdhd.cal_4383_a3
+vendor/firmware/bcmdhd_clm.blob_4383_a3
+vendor/firmware/bcmdhd_txcap.blob_4383_a3
+vendor/firmware/bcmdhd_txcap.blob_MMW
+vendor/firmware/focaltech_4cs4_fw.bin
+vendor/firmware/focaltech_4cs4_fw_b.bin
+vendor/firmware/focaltech_fl_fw.bin
+vendor/firmware/focaltech_fl_fw_b.bin
+vendor/firmware/focaltech_testconf_4cs4.ini
+vendor/firmware/focaltech_testconf_4cs4_b.ini
+vendor/firmware/focaltech_testconf_fl.ini
+vendor/firmware/focaltech_testconf_fl_b.ini
+vendor/firmware/fw_bcmdhd.bin_4383_a3
+vendor/firmware/fw_bcmdhd.map_4383_a3
+vendor/firmware/qfs.app
+vendor/firmware/synaptics_4cs4.img
+vendor/firmware/synaptics_4cs4_ba.img
+vendor/firmware/synaptics_4cs4_bb.img
+vendor/firmware/synaptics_mt.img
+vendor/framework/oat/arm64/com.google.android.camera.experimental2026.odex
+vendor/framework/oat/arm64/com.google.android.camera.experimental2026.vdex
+vendor/lib64/aconfig_ultrasonic_udfps_flags_c_lib.so
+vendor/lib64/com.google.hardware.biometrics.fingerprint.fingerprint-ext-V3-ndk.so
+vendor/lib64/libqfp-service.so
+vendor/lib64/libqfpsuez.so
+vendor/lib64/libqfstrusty_intf.so
+vendor/lib64/vendor.qti.hardware.fingerprint.aidl-V1-ndk.so

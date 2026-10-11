@@ -1,0 +1,585 @@
+<!--
+    Input:
+        device/google/gs-common/wireless_charger/compatibility_matrix.xml
+        device/google/gs-common/image/compatibility_matrix.xml
+        device/google/gs-common/audio/aidl/device_framework_matrix_product.xml
+        device/google/gs-common/modem/shared_modem_platform/compatibility_matrix.xml
+        device/google/gs-common/modem/modem_logging/compatibility_matrix.xml
+        device/google/gs-common/touch/twoshay/aidl/compatibility_matrix_zuma.xml
+        device/google/malibu/device_framework_matrix_product.xml
+        device/google/gs-common/camera/device_framework_matrix_product.xml
+        device/google/malibu/plat_security/device_framework_matrix_product.xml
+        device/google/gs-common/bcmbt/compatibility_matrix.xml
+        device/google/spacecraft/fingerprint/device_framework_matrix_product.xml
+        device/google/gs-common/battery_mitigation/compatibility_matrix.xml
+        device/google/gs-common/input/gia/aidl/compatibility_matrix.xml
+        vendor/google_devices/gs-common/proprietary/Floodcontrol/hal/device_framework_matrix_product.xml
+        vendor/mediatek/t900/proprietary/hardware/lbs/gnss_service/device_framework_matrix_product.xml
+        vendor/google_devices/gs-common/proprietary/biometrics/face/compatibility_matrix.xml
+        vendor/google/services/QuickShareExtension/framework_compatibility_matrix.xml
+        device/google/gs-common/pixel_ril/compatibility_matrix.xml
+        vendor/google_devices/gs-common/proprietary/ambience_hub/device_product_compatibility_matrix.xml
+-->
+<compatibility-matrix version="9.0" type="framework" level="202604">
+    <hal format="aidl">
+        <name>android.hardware.biometrics.fingerprint</name>
+        <interface>
+            <name>IFingerprint</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.boot</name>
+        <version>1.2</version>
+        <interface>
+            <name>IBootControl</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.boot</name>
+        <version>1.2</version>
+        <interface>
+            <name>IBootControl</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.cas</name>
+        <version>1.2</version>
+        <interface>
+            <name>IMediaCasService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.graphics.composer3</name>
+        <version>3</version>
+        <interface>
+            <name>IComposer</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.graphics.mapper</name>
+        <version>4.0</version>
+        <interface>
+            <name>IMapper</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.radio</name>
+        <version>1.2</version>
+        <interface>
+            <name>ISap</name>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.config</name>
+        <version>2</version>
+        <interface>
+            <name>IRadioConfig</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.data</name>
+        <version>2</version>
+        <interface>
+            <name>IRadioData</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.messaging</name>
+        <version>2</version>
+        <interface>
+            <name>IRadioMessaging</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.modem</name>
+        <version>2</version>
+        <interface>
+            <name>IRadioModem</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.network</name>
+        <version>2</version>
+        <interface>
+            <name>IRadioNetwork</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.sim</name>
+        <version>2</version>
+        <interface>
+            <name>IRadioSim</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.voice</name>
+        <version>2</version>
+        <interface>
+            <name>IRadioVoice</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.security.timestamp</name>
+        <interface>
+            <name>ITimeStamper</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.thermal</name>
+        <version>3</version>
+        <interface>
+            <name>IThermal</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.vibrator</name>
+        <version>2</version>
+        <interface>
+            <name>IVibrator</name>
+            <instance>dual</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.wifi.hostapd</name>
+        <interface>
+            <name>IHostapd</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>com.fingerprints33.extension</name>
+        <version>1.0</version>
+        <interface>
+            <name>IFingerprintAuthenticator</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IFingerprintCalibration</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IFingerprintEngineering</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IFingerprintNavigation</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IFingerprintRecalibration</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IFingerprintSenseTouch</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IFingerprintSensorTest</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.android.moseyservice</name>
+        <interface>
+            <name>IMoseyService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.edgetpu</name>
+        <version>2</version>
+        <interface>
+            <name>IEdgeTpuVendorService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.edgetpu.dba</name>
+        <interface>
+            <name>IDevice</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" updatable-via-apex="true">
+        <name>com.google.face.debug</name>
+        <version>3-4</version>
+        <interface>
+            <name>IDebugHost</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IDebugManager</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.flood</name>
+        <version>2</version>
+        <interface>
+            <name>IFloodService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.hardware.biometrics.fingerprint.debug</name>
+        <interface>
+            <name>IFingerprintDebug</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.hardware.pixel.display</name>
+        <version>21</version>
+        <interface>
+            <name>IDisplay</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.input</name>
+        <version>2-8</version>
+        <interface>
+            <name>ITouchContextService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.input</name>
+        <version>5-8</version>
+        <interface>
+            <name>ITwoshayNotificationService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.input</name>
+        <version>6-8</version>
+        <interface>
+            <name>ITwoshayFileDumpService</name>
+            <instance>touchflow_default</instance>
+            <instance>touchflow_outer</instance>
+            <instance>twoshay</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.input</name>
+        <interface>
+            <name>ITouchContextService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.input.algos.gril</name>
+        <version>2-8</version>
+        <interface>
+            <name>IGrilAntennaTuningService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.input.algos.spd</name>
+        <version>2-8</version>
+        <interface>
+            <name>IScreenProtectorDetectorService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.input.algos.touchflow</name>
+        <version>7-8</version>
+        <interface>
+            <name>ITouchflowLoggerService</name>
+            <instance>default_touchflow</instance>
+            <instance>outer_touchflow</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.input.gia.core</name>
+        <version>2</version>
+        <interface>
+            <name>IGiaService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.pixel.camera.connectivity.hal.provider</name>
+        <interface>
+            <name>ICameraProvider</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.pixel.modem.logmasklibrary</name>
+        <interface>
+            <name>ILiboemserviceProxy</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.pixel.modem_logging</name>
+        <version>3</version>
+        <interface>
+            <name>IVendorModemLogging</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.pixel.modem_logging.alcedo_t900</name>
+        <interface>
+            <name>IAlcedoT900ModemLogging</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.google.pixel.shared_modem_platform</name>
+        <version>3</version>
+        <interface>
+            <name>ISharedModemPlatform</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>google.hardware.image</name>
+        <interface>
+            <name>IComponentStore</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>hardware.google.ril_ext</name>
+        <version>1-2</version>
+        <interface>
+            <name>IRilExt</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>hardware.qorvo.uwb</name>
+        <interface>
+            <name>IUwbVendor</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.goodix.hardware.biometrics.fingerprint</name>
+        <version>2.1</version>
+        <interface>
+            <name>IGoodixFingerprintDaemon</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.google.ambience_hub</name>
+        <interface>
+            <name>IAmbienceHubConsumerManager</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IAmbienceHubProducerManager</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.google.battery_mitigation</name>
+        <interface>
+            <name>IBatteryMitigation</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.google.bluetooth_ext</name>
+        <version>1-4</version>
+        <interface>
+            <name>IBTChannelAvoidance</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IBluetoothCcc</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IBluetoothCco</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IBluetoothEwp</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IBluetoothExt</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IBluetoothFinder</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IBluetoothSar</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.google.gnss.gnss_manager.controller</name>
+        <version>2</version>
+        <interface>
+            <name>IGnssLoggingController</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IGnssVendorConfiguration</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.google.gnss.gnss_manager.logger</name>
+        <interface>
+            <name>IGnssManagerLogger</name>
+            <instance>gnss_aidl</instance>
+            <instance>gnss_daemon</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.google.google_battery</name>
+        <version>4-5</version>
+        <interface>
+            <name>IGoogleBattery</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.google.hardware.biometrics.face</name>
+        <interface>
+            <name>IFaceExt</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.google.plat_security</name>
+        <interface>
+            <name>ISecureTimestamp</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>ITrustyDecrypt</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.google.plat_security</name>
+        <interface>
+            <name>ISecureTimestamp</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>ITrustyDecrypt</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.google.whitechapel.audio.extension</name>
+        <version>7-8</version>
+        <interface>
+            <name>IAudioExtension</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.google.wifi_ext</name>
+        <version>2-5</version>
+        <interface>
+            <name>IWifiExt</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.google.wireless_charger</name>
+        <version>7-8</version>
+        <interface>
+            <name>IWirelessCharger</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.google.wireless_charger.service</name>
+        <version>2</version>
+        <interface>
+            <name>IWlcService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>AgpsDebugInterface</instance>
+            <instance>AgpsInterface</instance>
+            <instance>lppe_aidl_server</instance>
+            <instance>mtk_agps2framework</instance>
+            <instance>mtk_agps2gnssAidl</instance>
+            <instance>mtk_agpsd2debugService</instance>
+            <instance>mtk_debugService2agpsd</instance>
+            <instance>mtk_debugService2mnld</instance>
+            <instance>mtk_framework2agps</instance>
+            <instance>mtk_gnssAidl2agps</instance>
+            <instance>mtk_jam2mnl</instance>
+            <instance>mtk_lbs_log_v2s</instance>
+            <instance>mtk_lppe_socket_agps</instance>
+            <instance>mtk_lppe_socket_bt</instance>
+            <instance>mtk_lppe_socket_ipaddr</instance>
+            <instance>mtk_lppe_socket_lbs</instance>
+            <instance>mtk_lppe_socket_network</instance>
+            <instance>mtk_lppe_socket_sensor</instance>
+            <instance>mtk_lppe_socket_wlan</instance>
+            <instance>mtk_meta2mnld</instance>
+            <instance>mtk_mnl2jam</instance>
+            <instance>mtk_mnld2debugService</instance>
+            <instance>mtk_mnld2mtklogger</instance>
+            <instance>mtk_mnld2nlputils</instance>
+            <instance>mtk_mtklogger2mnld</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.qti.hardware.fingerprint</name>
+        <interface>
+            <name>IQfpExtendedFingerprint</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.qti.hardware.fingerprint</name>
+        <interface>
+            <name>IQfpExtendedSession</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.qti.hardware.fingerprint</name>
+        <interface>
+            <name>IQfpExtendedSessionCallback</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+</compatibility-matrix>

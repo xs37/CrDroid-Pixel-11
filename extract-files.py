@@ -56,6 +56,8 @@ module = ExtractUtilsModule(
     ],
 )
 
+module.add_proprietary_file("proprietary-files-carriersettings.txt")
+
 module.add_generated_proprietary_file(
     "proprietary-files-vendor.txt",
     partition="vendor",
