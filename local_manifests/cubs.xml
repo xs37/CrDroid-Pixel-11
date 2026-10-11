@@ -8,13 +8,4 @@
            path="kernel/google/spacecraft"
            remote="github"
            revision="Base" />
-  <project name="xs37/yogi-orangefox"
-           path="device/google/pixels"
-           remote="github"
-           revision="main" />
-  <!-- Porting reference only; this tree targets the foldable yogi. -->
-  <project name="asdfmonster261/android_device_google_yogi"
-           path="device/google/yogi"
-           remote="github"
-           revision="lineage-24.0" />
 </manifest>
