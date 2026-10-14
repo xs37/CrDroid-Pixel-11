@@ -76,6 +76,24 @@ PRODUCT_PACKAGES += \
     update_engine_sideload \
     update_verifier
 
+# Stock vendor RRO overlays. Kati rejects prebuilt apks in PRODUCT_COPY_FILES, so
+# extract-files.py writes prebuilt_overlay modules next to the extracted apks.
+PRODUCT_PACKAGES += \
+    CrossDeviceAccessServicePrimary__cubs__auto_generated_rro_vendor \
+    DeviceDiagnostics__cubs__auto_generated_rro_vendor \
+    DMService__cubs__auto_generated_rro_vendor \
+    Flipendo__cubs__auto_generated_rro_vendor \
+    framework-res__cubs__auto_generated_rro_vendor \
+    NfcOverlayCubsGsi \
+    PixelNfcOverlayCommon \
+    RilExtOverlayRRO \
+    SettingsGoogle__cubs__auto_generated_rro_vendor \
+    SettingsProvider__cubs__auto_generated_rro_vendor \
+    StorageManagerGoogle__cubs__auto_generated_rro_vendor \
+    SystemUIGoogle__cubs__auto_generated_rro_vendor \
+    TeleService__cubs__auto_generated_rro_vendor \
+    Traceur__cubs__auto_generated_rro_vendor
+
 # Telephony stack that stock ships in product/system_ext as source-built modules.
 PRODUCT_PACKAGES += \
     ImsStack \
