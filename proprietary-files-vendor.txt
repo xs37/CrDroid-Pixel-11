@@ -1,6 +1,6 @@
 # WIP candidate list adapted from the Yogi LineageOS 24.0 reference.
 # Entries are retained only when that exact source path exists in the Cubs stock dump.
-# Presence in stock does not prove a blob is needed or compatible; audit before building.
+# Presence in stock does not prove a blob is needed or compatible; audit in progress.
 
 vendor/apex/com.google.android.hardware.biometrics.face.apex
 vendor/apex/com.google.android.widevine-15027108-cp2a.apex

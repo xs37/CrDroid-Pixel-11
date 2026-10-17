@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<manifest>
+  <!-- Optional. BoardConfig.mk currently uses the prebuilt Image.lz4 from the vendor
+       tree, so this source is not built by the ROM. Only needed if you build the
+       kernel yourself; the stock .ko modules must then match it. -->
+  <project name="xs37/espada-kernel-KSU-Susfs"
+           path="kernel/google/spacecraft"
+           remote="github"
+           revision="Base" />
+</manifest>

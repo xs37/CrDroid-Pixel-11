@@ -1,6 +1,4 @@
-# Stock cubs system_dlkm modules from the local dump.
-# Proprietary binaries are extracted locally and must not be committed.
-
+# Stock cubs system_dlkm modules from local device dump.
 
 system_dlkm/lib/modules/modules.alias
 system_dlkm/lib/modules/modules.dep

@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Convert Android vendor_sepolicy.unversioned.cil into a .te file and genfs_contexts."""
 import re
-import re
 import sys
 from collections import OrderedDict
 
@@ -234,8 +233,8 @@ with open(out_te, "w") as f:
     for a, v in expands:
         f.write("expandattribute %s %s;\n" % (a, v))
     f.write("\n")
-    f.write("\n".join(trans) + "\n\n")
-    f.write("\n".join(rules) + "\n")
+    f.write("\n".join(dict.fromkeys(trans)) + "\n\n")
+    f.write("\n".join(dict.fromkeys(rules)) + "\n")
 
 with open(out_genfs, "w") as f:
     f.write("\n".join(genfs) + "\n")

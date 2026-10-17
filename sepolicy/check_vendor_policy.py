@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Compile the cubs vendor sepolicy with m4 + checkpolicy (no ROM build needed).
 
-Usage: check_vendor_policy.py <android-source-root>
+Usage: check_vendor_policy.py [android-source-root]   (defaults to $ANDROID_BUILD_TOP)
 Needs m4 and checkpolicy (apt install m4 checkpolicy). This mirrors Soong's
 vendor_sepolicy.conf (public + reqd_mask + vendor policy) and catches undeclared
 or duplicate types/attributes and context files that use unknown types.
@@ -14,7 +14,12 @@ import sys
 import glob
 import tempfile
 
-root = os.path.abspath(sys.argv[1])
+if len(sys.argv) > 1:
+    root = os.path.abspath(sys.argv[1])
+elif os.environ.get("ANDROID_BUILD_TOP"):
+    root = os.path.abspath(os.environ["ANDROID_BUILD_TOP"])
+else:
+    sys.exit(__doc__)
 ORDER = ["flagging_macros", "security_classes", "initial_sids", "access_vectors", "global_macros",
          "neverallow_macros", "mls_macros", "mls_decl", "mls", "policy_capabilities", "te_macros",
          "ioctl_defines", "ioctl_macros", "nlmsg_defines", "nlmsg_macros", "attributes|*.te",
@@ -39,6 +44,15 @@ def group(path):
             return i
     return len(ORDER)
 
+
+# A missing policy directory would otherwise be skipped silently and give a false pass.
+REQUIRED = {"system/sepolicy/public", "system/sepolicy/vendor", "system/sepolicy/reqd_mask",
+            "device/google/cubs/sepolicy/vendor"}
+for d in DIRS:
+    if not os.path.isdir(os.path.join(root, d)):
+        if d in REQUIRED:
+            sys.exit("error: required directory missing under %s: %s" % (root, d))
+        print("warning: skipping missing directory:", d, file=sys.stderr)
 
 files = []
 for d in DIRS:

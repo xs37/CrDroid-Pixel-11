@@ -1,5 +1,5 @@
 # Stock cubs vendor_dlkm modules from the local dump.
-# Proprietary binaries are extracted locally and must not be committed.
+
 vendor_dlkm/lib/modules/modules.alias
 vendor_dlkm/lib/modules/modules.dep
 vendor_dlkm/lib/modules/modules.softdep

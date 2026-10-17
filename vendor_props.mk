@@ -3,7 +3,7 @@
 # ro.build.*, ro.vendor.build.*, ro.product.*, ro.boot.*, ro.board.*, ro.bionic.*,
 # ro.virtual_ab.* and the other properties the product makefiles already set.
 #
-# ro.hardware.egl matters most: without it SurfaceFlinger aborts at boot.
+# ro.hardware.egl matters most: without it SurfaceFlinger aborts at boot!!!!
 
 PRODUCT_VENDOR_PROPERTIES += \
     aaudio.mmap_exclusive_policy=2 \

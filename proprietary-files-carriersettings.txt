@@ -1,4 +1,4 @@
-# All blobs below are extracted from the cubs stock product image listed in proprietary-files.txt
+# All blobs below are extracted from the cubs stock product image from device and listed in proprietary-files.txt
 product/etc/CarrierSettings/019mobile_il.pb
 product/etc/CarrierSettings/1and1_de.pb
 product/etc/CarrierSettings/1global_bootstrap.pb
