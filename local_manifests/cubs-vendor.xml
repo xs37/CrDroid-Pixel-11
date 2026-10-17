@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
 <manifest>
-  <!-- Optional and access-restricted: only for people the blob repo owner has
-       granted access to. Everyone else should run extract-files.py instead. -->
+  <!-- Optional and access-restricted (private repo, files stored in Git LFS): only for
+       people the blob repo owner has granted access to. Needs git-lfs installed and
+       GitLab authentication before `repo sync`. Everyone else should run
+       extract-files.py instead. -->
   <remote name="gitlab" fetch="https://gitlab.com" />
   <project name="gabrielallan35/pixel-11-blobs"
            path="vendor/google/cubs"

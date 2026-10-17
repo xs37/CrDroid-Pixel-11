@@ -2,7 +2,7 @@
 
 Early Android 17 / CrDroid 17 device-tree bring-up for the base Google Pixel 11.
 This tree now includes stock-backed fstab/VINTF, AVB, sepolicy wiring, and
-boot/vbmeta partition layout for `cubs` a Spacecraft tree variant. A full ROM build test is still in progress.
+boot/vbmeta partition layout for `cubs`. A full ROM build test is still required before flashing.
 
 ## Verified target
 
@@ -23,16 +23,22 @@ there and must be checked against this device's stock images before producing im
 ## Source projects
 
 The device tree syncs to `device/google/cubs` via `local_manifests/cubs.xml`. The
-proprietary vendor tree (`vendor/google/cubs`) is and can be found on gitlab
+proprietary vendor tree (`vendor/google/cubs`) is **not** part of that manifest, so
+anyone can build without access to a private repository. Pick one:
 
-- blobs add `local_manifests/cubs-vendor.xml`
+- **Extract it yourself (everyone):** run `extract-files.py` against your own `cubs`
+  stock dump or a connected device (see below).
+- **Maintainer blob repo (restricted):** add `local_manifests/cubs-vendor.xml`
   ([Pixel 11 blobs on GitLab](https://gitlab.com/gabrielallan35/pixel-11-blobs)); needs
   GitLab access and Git LFS.
 
+`BoardConfig.mk` uses the prebuilt `Image.lz4` and `dtbo.img` from the vendor tree.
 The [Espada kernel fork](https://github.com/xs37/espada-kernel-KSU-Susfs) (branch
-`Base`) is optional (`local_manifests/cubs-kernel.xml`) and is built inline by the ROM;
+`Base`) is optional (`local_manifests/cubs-kernel.xml`) and is not built by the ROM;
 if you use a self-built kernel, `boot` and `vendor_kernel_boot` must stay matched and
 the stock `.ko` modules must be compatible with it.
+
+No stock partition images or proprietary blobs are committed to this repository.
 
 ## Stock configuration and blob candidates
 
@@ -48,7 +54,16 @@ vendor_boot recovery layout.
 
 The `proprietary-files*.txt` files and `extract-files.py` are a stock-backed
 extraction setup. Candidate paths were checked against the local `cubs` dump,
-including the separate `vendor_dlkm` partition.
+including the separate `vendor_dlkm` partition. The `vendor_dlkm` list contains
+stock module references; the proprietary module binaries are held in the private
+vendor project rather than this public repository. The product configuration stages the stock
+module load order and blocklist plus the Cubs-specific module-init config.
+Selected graphics, keystore, gatekeeper, and SoC manufacturer properties come
+from the stock vendor build properties. Stock SELinux blob entries remain in the
+candidate list but are skipped by `skip-files-vendor.txt`, so policy is built
+from source rather than copied from stock binaries. The vendor list also
+includes stock RRO overlays, capability XMLs, and vendor init scripts as
+extraction references.
 
 ## Sync on the Linux build desktop
 
@@ -64,11 +79,25 @@ curl -fL https://raw.githubusercontent.com/xs37/CrDroid-Pixel-11/main/local_mani
 repo sync -c -j"$(nproc --all)"
 ```
 
-Then populate `vendor/google/cubs`
+Then populate `vendor/google/cubs`, either by adding `cubs-vendor.xml` (restricted)
+or by extracting from your own stock dump:
 
+```sh
+cd device/google/cubs
+./extract-files.py <path-to-extracted-stock-dump>   # or run without args to pull via adb
+```
 
 Build with `lunch lineage_cubs-userdebug` (Lineage-based ROMs, including crDroid) or
 `lunch aosp_cubs-userdebug` (plain AOSP), then `m bacon`/the ROM's own target.
+
+## Pre-build checks (no build needed)
+
+```sh
+device/google/cubs/scripts/lint_tree.py                   # static checks, no vendor tree or ROM needed (also runs in CI)
+# from the ROM root, after syncing the device tree and vendor/google/cubs
+device/google/cubs/scripts/verify_vendor_tree.py          # lists, modules, copy files, Android.bp
+device/google/cubs/sepolicy/check_vendor_policy.py .      # needs m4 + checkpolicy
+```
 
 ## Verification status
 
@@ -93,7 +122,7 @@ been completed yet):
 - Vendor sepolicy is wired through `sepolicy/vendor` plus shared Pixel policy
   directories, and Wi-Fi board settings are included.
 
-## Build validation status 75%
+## Build validation status
 
 The private vendor project contains the generated makefiles and the proprietary
 files referenced by this device tree, including
@@ -103,4 +132,15 @@ build and on-device bring-up have not been completed; do not flash artifacts
 from this WIP until those checks pass.
 
 The product files stop with a clear error until the local proprietary vendor
-tree exists. Do not flash artifacts from this WIP! DO NOT USE THIS WIP UNSTABLE UNTESTED!
+tree exists. Do not flash artifacts from this WIP!
+
+## License
+
+The source files in this repository are licensed under the Apache License,
+Version 2.0 (see [LICENSE](LICENSE) and [NOTICE](NOTICE)).
+
+**This license does not cover the proprietary blobs.** Proprietary binaries,
+firmware and related files (everything that ends up under
+`vendor/google/cubs/proprietary`) belong to Google LLC and other third parties,
+are not part of this repository, and remain under their own license terms. This
+project does not license or redistribute them.

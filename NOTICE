@@ -1,0 +1,12 @@
+CrDroid Pixel 11 (cubs) device tree
+
+The source files in this repository are licensed under the Apache License,
+Version 2.0 (see LICENSE), except where a file states otherwise.
+
+This license does NOT cover any proprietary blobs or other third-party
+material. Proprietary binaries, firmware, APKs, kernel images and related files
+(for example everything under vendor/google/cubs/proprietary, however you
+obtain it) are the property of Google LLC and their respective owners. They are
+not part of this repository, are not licensed to you by this project, and
+remain subject to their own license terms. You are responsible for complying
+with those terms.

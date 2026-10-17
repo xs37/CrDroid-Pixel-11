@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
 <manifest>
   <!-- Public device tree. The vendor tree is NOT included here: either extract it
        yourself with extract-files.py (see README) or add cubs-vendor.xml if you
