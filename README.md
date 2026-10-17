@@ -22,16 +22,17 @@ there and must be checked against this device's stock images before producing im
 
 ## Source projects
 
-The local manifest syncs this device tree to `device/google/cubs` and the private
-proprietary vendor tree to `vendor/google/cubs`. The latter is maintained in the
-[Pixel 11 blobs GitLab repository](https://gitlab.com/gabrielallan35/pixel-11-blobs)
-and requires GitLab access. The blobs remain outside this public repository.
+The device tree syncs to `device/google/cubs` via `local_manifests/cubs.xml`. The
+proprietary vendor tree (`vendor/google/cubs`) is and can be found on gitlab
 
-- [Espada kernel fork](https://github.com/xs37/espada-kernel-KSU-Susfs),
-  branch `Base`. The generated `boot` and `vendor_kernel_boot` images must stay matched.
+- blobs add `local_manifests/cubs-vendor.xml`
+  ([Pixel 11 blobs on GitLab](https://gitlab.com/gabrielallan35/pixel-11-blobs)); needs
+  GitLab access and Git LFS.
 
-The kernel source is fetched as a separate project. No stock partition images
-or proprietary blobs are committed to this public device-tree repository.
+The [Espada kernel fork](https://github.com/xs37/espada-kernel-KSU-Susfs) (branch
+`Base`) is optional (`local_manifests/cubs-kernel.xml`) and is built inline by the ROM;
+if you use a self-built kernel, `boot` and `vendor_kernel_boot` must stay matched and
+the stock `.ko` modules must be compatible with it.
 
 ## Stock configuration and blob candidates
 
@@ -47,39 +48,40 @@ vendor_boot recovery layout.
 
 The `proprietary-files*.txt` files and `extract-files.py` are a stock-backed
 extraction setup. Candidate paths were checked against the local `cubs` dump,
-including the separate `vendor_dlkm` partition. The `vendor_dlkm` list contains
-stock module references; the proprietary module binaries are held in the private
-vendor project rather than this public repository. The product configuration stages the stock
-module load order and blocklist plus the Cubs-specific module-init config.
-Selected graphics, keystore, gatekeeper, and SoC manufacturer properties come
-from the stock vendor build properties. Stock SELinux blob entries remain in the
-candidate list but are skipped by `skip-files-vendor.txt`, so policy is built
-from source rather than copied from stock binaries. The vendor list also
-includes stock RRO overlays, capability XMLs, and vendor init scripts as
-extraction references.
+including the separate `vendor_dlkm` partition.
 
 ## Sync on the Linux build desktop
 
-Install the Android build prerequisites, including Git LFS, then initialize the ROM
-source and sync the projects. Authenticate to GitLab first so `repo sync` can fetch
-the private vendor project and its LFS objects:
+Install the Android build prerequisites, then initialize the ROM source of your
+choice and add the local manifest:
 
 ```sh
-git lfs install
-mkdir -p ~/android/crdroid-cubs
-cd ~/android/crdroid-cubs
-repo init -u https://github.com/crdroidandroid/android.git -b 17.0
+mkdir -p ~/android/rom-cubs && cd ~/android/rom-cubs
+repo init -u <ROM manifest URL> -b <branch>   # e.g. https://github.com/crdroidandroid/android.git -b 17.0
 mkdir -p .repo/local_manifests
-curl -fL \
-  https://raw.githubusercontent.com/xs37/CrDroid-Pixel-11/main/local_manifests/cubs.xml \
+curl -fL https://raw.githubusercontent.com/xs37/CrDroid-Pixel-11/main/local_manifests/cubs.xml \
   -o .repo/local_manifests/cubs.xml
 repo sync -c -j"$(nproc --all)"
 ```
 
-The manifest checks out this repository at `device/google/cubs`, the private
-vendor tree at `vendor/google/cubs`, and the Espada kernel source at
-`kernel/google/spacecraft`. The device and vendor directories are populated by
-syncing those projects; no manual copy of the vendor tree is required.
+Then populate `vendor/google/cubs` with gitlab or personally dumped files ((hint find cubs vendor xml its here))
+
+```sh
+cd device/google/cubs
+./extract-files.py <path-to-extracted-stock-dump>   # or run without args to pull via adb
+```
+
+Build with `lunch lineage_cubs-userdebug` (Lineage-based ROMs, including crDroid) or
+`lunch aosp_cubs-userdebug` (plain AOSP), then `m bacon`/the ROM's own target.
+
+## Pre-build checks (no build needed)
+
+```sh
+device/google/cubs/scripts/lint_tree.py                   # static checks, no vendor tree or ROM needed (also runs in CI)
+# from the ROM root, after syncing the device tree and vendor/google/cubs
+device/google/cubs/scripts/verify_vendor_tree.py          # lists, modules, copy files, Android.bp
+device/google/cubs/sepolicy/check_vendor_policy.py .      # needs m4 + checkpolicy
+```
 
 ## Verification status
 
@@ -107,11 +109,21 @@ been completed yet):
 ## Build validation status
 
 The private vendor project contains the generated makefiles and the proprietary
-files referenced by this device tree, including
-`vendor/google/cubs/proprietary/Image.lz4` and `dtbo.img`. The source setup
+files referenced by this device tree, The source setup
 populates both device and vendor trees through the manifest. A complete ROM
 build and on-device bring-up have not been completed; do not flash artifacts
 from this WIP until those checks pass.
 
 The product files stop with a clear error until the local proprietary vendor
-tree exists. Do not flash artifacts from this WIP!
+tree exists. Do not flash artifacts from this WIP!  DO NOT USE THIS WIP UNSTABLE UNTESTED! IF YOU DO YOURE ON YOUR OWN!
+
+## License
+
+The source files in this repository are licensed under the Apache License,
+Version 2.0 (see [LICENSE](LICENSE) and [NOTICE](NOTICE)).
+
+**This license does not cover the proprietary blobs.** Proprietary binaries,
+firmware and related files (everything that ends up under
+`vendor/google/cubs/proprietary`) belong to Google LLC and other third parties,
+are not part of this repository, and remain under their own license terms. This
+project does not license or redistribute them.
