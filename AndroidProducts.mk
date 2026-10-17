@@ -5,5 +5,9 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/lineage_cubs.mk
 
 COMMON_LUNCH_CHOICES := \
+    aosp_cubs-user \
     aosp_cubs-userdebug \
-    lineage_cubs-userdebug
+    aosp_cubs-eng \
+    lineage_cubs-user \
+    lineage_cubs-userdebug \
+    lineage_cubs-eng

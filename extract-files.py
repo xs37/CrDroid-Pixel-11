@@ -1,4 +1,4 @@
-#!/usr/bin/env -S PYTHONPATH=../../../../tools/extract-utils python3
+#!/usr/bin/env -S PYTHONPATH=../../../tools/extract-utils python3
 #
 # SPDX-License-Identifier: Apache-2.0
 #

@@ -11,8 +11,5 @@ $(call inherit-product, $(DEVICE_PATH)/aosp_cubs.mk)
 TARGET_SCREEN_HEIGHT := 2424
 TARGET_SCREEN_WIDTH := 1080
 
+# PRODUCT_DEVICE/MODEL/BRAND/MANUFACTURER come from aosp_cubs.mk.
 PRODUCT_NAME := lineage_cubs
-PRODUCT_DEVICE := cubs
-PRODUCT_MODEL := Pixel 11
-PRODUCT_BRAND := google
-PRODUCT_MANUFACTURER := Google

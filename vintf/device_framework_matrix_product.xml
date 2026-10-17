@@ -37,14 +37,6 @@
         </interface>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.boot</name>
-        <version>1.2</version>
-        <interface>
-            <name>IBootControl</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
         <name>android.hardware.cas</name>
         <version>1.2</version>
         <interface>
@@ -473,17 +465,6 @@
         <name>vendor.google.hardware.biometrics.face</name>
         <interface>
             <name>IFaceExt</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.google.plat_security</name>
-        <interface>
-            <name>ISecureTimestamp</name>
-            <instance>default</instance>
-        </interface>
-        <interface>
-            <name>ITrustyDecrypt</name>
             <instance>default</instance>
         </interface>
     </hal>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <!-- Optional and access-restricted: only for people the blob repo owner has
+       granted access to. Everyone else should run extract-files.py instead. -->
+  <remote name="gitlab" fetch="https://gitlab.com" />
+  <project name="gabrielallan35/pixel-11-blobs"
+           path="vendor/google/cubs"
+           remote="gitlab"
+           revision="main" />
+</manifest>

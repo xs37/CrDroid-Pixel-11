@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <remote name="gitlab" fetch="https://gitlab.com" />
-
+  <!-- Public device tree. The vendor tree is NOT included here: either extract it
+       yourself with extract-files.py (see README) or add cubs-vendor.xml if you
+       have access to the maintainer's blob repository. -->
   <project name="xs37/CrDroid-Pixel-11"
            path="device/google/cubs"
            remote="github"
            revision="main" />
-  <project name="gabrielallan35/pixel-11-blobs"
-           path="vendor/google/cubs"
-           remote="gitlab"
-           revision="main" />
-  <project name="xs37/espada-kernel-KSU-Susfs"
-           path="kernel/google/spacecraft"
-           remote="github"
-           revision="Base" />
 </manifest>
